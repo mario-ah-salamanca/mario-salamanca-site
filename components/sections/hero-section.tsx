@@ -1,14 +1,38 @@
 import { siteData } from "@/data/site";
+import LiquidEther from "@/components/backgrounds/liquid-ether";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icons";
+
+const heroLiquidColors = ["#5B8CFF", "#00A6E0", "#7BD0FF", "#DAE2FF"];
 
 export function HeroSection() {
   const { hero } = siteData;
 
   return (
-    <section className="relative flex min-h-[680px] items-start overflow-hidden border-b border-[var(--color-outline)]/70 px-4 pb-16 pt-32 md:min-h-screen md:items-center md:px-16 md:pb-20 md:pt-40">
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-[560px] w-[560px] rounded-full bg-[var(--color-primary-strong)] opacity-[0.07] blur-[110px] md:h-[800px] md:w-[800px]" />
+    <section className="relative flex min-h-[680px] items-start overflow-hidden border-b border-[var(--color-outline)]/70 bg-[var(--color-void)] px-4 pb-16 pt-32 md:min-h-screen md:items-center md:px-16 md:pb-20 md:pt-40">
+      <div className="absolute inset-0 z-0">
+        <LiquidEther
+          className="opacity-75 md:opacity-95"
+          mouseForce={30}
+          cursorSize={200}
+          isViscous
+          viscous={30}
+          iterationsViscous={32}
+          iterationsPoisson={32}
+          resolution={0.5}
+          isBounce={true}
+          autoDemo={true}
+          autoSpeed={0.5}
+          autoIntensity={2.2}
+          takeoverDuration={0.25}
+          autoResumeDelay={3000}
+          autoRampDuration={0.6}
+          colors={heroLiquidColors}
+        />
+      </div>
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_center,rgba(91,140,255,0.1),transparent_42%),linear-gradient(180deg,rgba(6,10,18,0.2),rgba(6,10,18,0.84))] md:bg-[radial-gradient(circle_at_center,rgba(91,140,255,0.1),transparent_42%),linear-gradient(180deg,rgba(6,10,18,0.08),rgba(6,10,18,0.62))]" />
+      <div className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center">
+        <div className="h-[560px] w-[560px] rounded-full bg-[var(--color-primary-strong)] opacity-[0.05] blur-[110px] md:h-[800px] md:w-[800px]" />
       </div>
 
       <div className="deep-glow relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
