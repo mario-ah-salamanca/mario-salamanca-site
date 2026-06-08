@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mario Salamanca Site
 
-## Getting Started
+Static personal brand website for Mario Salamanca, built to present software
+development, systems-building, creative founder work, and lead capture in a
+GitHub Pages friendly V1.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- React
+- Tailwind CSS v4
+- Static export for GitHub Pages
+
+## Local Development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+The production build uses `output: "export"` and writes the static site to
+`out/`.
 
-To learn more about Next.js, take a look at the following resources:
+## GitHub Pages Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deployment is handled by `.github/workflows/deploy.yml` on pushes to `main`.
+The workflow installs dependencies with `npm ci`, builds the static export, and
+uploads `./out` as the GitHub Pages artifact.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The `public/.nojekyll` file is included so GitHub Pages serves the exported
+Next.js assets correctly.
 
-## Deploy on Vercel
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Set this for Formspree-powered static forms:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
+```
+
+Without the variable, forms still render and fall back to `#`.
+
+## Future Roadmap
+
+- Supabase leads table
+- Resources download system
+- Build Log pages
+- Client profiles
+- Private client portal

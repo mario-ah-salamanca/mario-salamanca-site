@@ -20,7 +20,7 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   title: "Mario Salamanca | Software Developer & Systems Builder",
   description:
-    "Personal website for Mario Salamanca, a software developer, systems builder, and creative founder.",
+    "I help founders, creators, and small teams turn messy ideas into clear websites, workflows, prototypes, and digital systems.",
 };
 
 export default function RootLayout({

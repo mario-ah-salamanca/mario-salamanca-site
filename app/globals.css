@@ -124,9 +124,21 @@ textarea {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 14px;
+  gap: 12px;
   padding: 28px 24px;
   transform: rotate(-2deg) translateY(4px);
+}
+
+.code-preview__label {
+  width: fit-content;
+  border: 1px solid rgba(123, 208, 255, 0.25);
+  border-radius: 4px;
+  background: rgba(13, 19, 32, 0.78);
+  color: rgba(178, 197, 255, 0.9);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  line-height: 1;
+  padding: 7px 10px;
 }
 
 .code-preview__line {
@@ -165,8 +177,8 @@ textarea {
 
 @media (max-width: 767px) {
   :root {
-    --color-void: #f8faff;
-    --color-surface: #44454d;
+    --color-void: #060a12;
+    --color-surface: #11131a;
     --color-surface-low: #090d18;
     --color-surface-raised: #0d1320;
     --color-surface-high: #1d1f26;

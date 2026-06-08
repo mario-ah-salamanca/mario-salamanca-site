@@ -1,13 +1,14 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { siteData } from "@/data/site";
-import { Icon } from "@/components/ui/icons";
 
 type SiteShellProps = {
   children: ReactNode;
 };
 
 export function SiteShell({ children }: SiteShellProps) {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="deep-signal-bg min-h-screen overflow-x-hidden bg-[var(--color-void)] text-[var(--color-text)]">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--color-outline)]/50 bg-[var(--color-surface)]/80 backdrop-blur-md">
@@ -45,13 +46,12 @@ export function SiteShell({ children }: SiteShellProps) {
             Start a project
           </Link>
 
-          <button
-            aria-label="Menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-[4px] text-[var(--color-muted)] transition hover:bg-white/[0.04] hover:text-[var(--color-primary)] md:hidden"
-            type="button"
+          <Link
+            className="inline-flex rounded-[4px] bg-[var(--color-primary-strong)] px-3 py-3 text-xs font-medium uppercase leading-none tracking-[0.08em] text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] md:hidden"
+            href="#contact"
           >
-            <Icon name="menu" size={22} />
-          </button>
+            Start a project
+          </Link>
         </nav>
       </header>
 
@@ -63,7 +63,8 @@ export function SiteShell({ children }: SiteShellProps) {
             {siteData.name}
           </div>
           <div className="text-base text-[var(--color-secondary)]">
-            © 2024 Mario Salamanca. Built for reliability.
+            © {currentYear} Mario Salamanca. Built for clarity, reliability,
+            and execution.
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-base text-[var(--color-outline-strong)]">
             {siteData.footerLinks.map((link) => (

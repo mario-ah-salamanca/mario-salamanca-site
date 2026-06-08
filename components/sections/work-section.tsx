@@ -14,17 +14,21 @@ export function WorkSection() {
         action={
           <Link
             className="inline-flex items-center gap-1 text-xs font-medium uppercase leading-none tracking-[0.08em] text-[var(--color-primary)] transition hover:text-[var(--color-secondary)]"
-            href="#"
+            href="#work"
           >
-            All
+            View selected work
             <Icon name="external" size={16} />
           </Link>
         }
         id="work"
         title="Selected Builds"
       />
+      <p className="mb-8 max-w-2xl text-sm leading-6 text-[var(--color-outline-strong)]">
+        Some professional work is summarized at a high level to respect
+        confidentiality.
+      </p>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_0.85fr]">
+      <div className="grid gap-6 lg:grid-cols-2">
         {siteData.work.map((project) => (
           <article
             className="overflow-hidden rounded-[8px] border border-white/[0.07] bg-[var(--color-surface-raised)]"
@@ -37,14 +41,8 @@ export function WorkSection() {
                 <span />
               </div>
               <div className="code-preview__body">
-                {[
-                  "const stream = createSignal(feed);",
-                  "await ledger.sync(orderBook);",
-                  "latency.p95 < 50 ? ship() : tune();",
-                  "socket.on('tick', reconcile);",
-                  "validate.risk(exposure.matrix);",
-                  "render(<TradingTerminal />);",
-                ].map((line) => (
+                <div className="code-preview__label">{project.codeLabel}</div>
+                {project.codeLines.map((line) => (
                   <div className="code-preview__line" key={line}>
                     {line}
                   </div>
@@ -66,22 +64,6 @@ export function WorkSection() {
             </div>
           </article>
         ))}
-
-        <div
-          className="hidden rounded-[8px] border border-[var(--color-outline)]/50 bg-[var(--color-surface-low)] p-8 lg:block"
-          id="build-log"
-        >
-          <div className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-primary)]">
-            Build Log
-          </div>
-          <h3 className="mt-4 font-serif text-3xl font-medium leading-tight text-[var(--color-text)]">
-            Field notes from systems that need to stay dependable.
-          </h3>
-          <p className="mt-5 text-base leading-7 text-[var(--color-muted)]">
-            Prototypes, integrations, validation passes, and product decisions
-            written with the same precision as the code behind them.
-          </p>
-        </div>
       </div>
     </section>
   );
