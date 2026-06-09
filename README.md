@@ -55,7 +55,9 @@ Set this for Formspree-powered static forms:
 NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
 ```
 
-Without the variable, forms still render and fall back to `#`.
+For GitHub Pages, add this value as a secret in the `github-pages` environment.
+The deploy workflow reads it during the build job so the exported static forms
+submit to Formspree instead of posting back to the GitHub Pages HTML route.
 
 ## Future Roadmap
 
