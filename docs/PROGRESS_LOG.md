@@ -4,6 +4,49 @@
 
 ### Completed
 
+- Reviewed the staged replacement of the Liquid Ether hero background with the new Aurora WebGL background.
+- Verified the change keeps the homepage static-export compatible.
+- Captured desktop and mobile rendered screenshots for first-viewport readability.
+- Identified blocking lint issues, a reduced-motion regression, desktop visual polish concerns, and whitespace cleanup.
+- Did not edit implementation files because the review task explicitly requested no fixes without approval.
+
+### Files Changed
+
+- `components/backgrounds/aurora.tsx`
+- `components/backgrounds/liquid-ether.tsx`
+- `components/backgrounds/responsive-liquid-ether.tsx`
+- `components/sections/hero-section.tsx`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+The new aurora direction better matches the premium, calm brand direction than the heavier liquid simulation, but the implementation still needs accessibility and lint cleanup before it is ready to ship.
+
+### Checks Run
+
+- Failed: `npm run lint`
+- Passed: `npm run build`
+- Passed: desktop screenshot check with Playwright at `1440x900`
+- Passed: mobile screenshot check with Playwright at `390x844`
+- Passed with warnings/issues noted: rendered dev smoke check at `http://localhost:3000`
+- Failed: first Playwright screenshot attempt against `http://localhost:3001` after the temporary dev server exited because another Next dev server was already running on port 3000.
+
+### Known Issues
+
+- `components/backgrounds/aurora.tsx` fails lint because it updates a ref during render, uses a `let` that can be `const`, and has a hook dependency warning.
+- The new Aurora path no longer respects `prefers-reduced-motion`; the previous `ResponsiveLiquidEther` guard was removed.
+- Desktop screenshot QA shows a hard-edged dark rectangle behind the hero content that weakens the intended elegant aurora effect.
+- `git diff --cached --check` reports trailing whitespace in the new Aurora shader and hero markup.
+- Existing browser automation surfaced unrelated hydration warnings on form fields in the dev server log.
+
+### Next Recommended Task
+
+- Fix the Aurora lint and reduced-motion issues, then retest desktop and mobile hero rendering.
+
+## 2026-06-09
+
+### Completed
+
 - Added the MAHS logo asset to the shared site data model.
 - Replaced the main navigation text brand with the MAHS SVG logo.
 - Added a smaller footer logo on the left side while preserving aspect ratio.
