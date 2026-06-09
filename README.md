@@ -37,6 +37,9 @@ Deployment is handled by `.github/workflows/deploy.yml` on pushes to `main`.
 The workflow installs dependencies with `npm ci`, builds the static export, and
 uploads `./out` as the GitHub Pages artifact.
 
+Before the first successful deploy, enable Pages once in the repository:
+Settings -> Pages -> Build and deployment -> Source -> GitHub Actions.
+
 The `public/.nojekyll` file is included so GitHub Pages serves the exported
 Next.js assets correctly.
 
