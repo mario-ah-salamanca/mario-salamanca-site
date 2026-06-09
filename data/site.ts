@@ -12,17 +12,37 @@ export const siteData = {
     { label: "Build Log", href: "#build-log" },
     { label: "About", href: "#about" },
   ],
-  footerLinks: [
-    { label: "GitHub", href: "https://github.com/mario-ah-salamanca" },
-    {
-      label: "Source Code",
-      href: "https://github.com/mario-ah-salamanca/mario-salamanca-site",
-    },
-  ],
-  footerTodoLinks: [
-    { label: "LinkedIn", note: "TODO: Add verified LinkedIn URL." },
-    { label: "Email", note: "TODO: Add verified public email." },
-  ],
+  footer: {
+    trustStatement: "Built for clarity, reliability, and execution.",
+    trustLinks: [
+      {
+        label: "GitHub",
+        href: "https://github.com/mario-ah-salamanca",
+        status: "active",
+      },
+      {
+        label: "Source Code",
+        href: "https://github.com/mario-ah-salamanca/mario-salamanca-site",
+        status: "active",
+      },
+      {
+        label: "LinkedIn",
+        note: "Coming soon",
+        status: "planned",
+      },
+      {
+        label: "Email",
+        href: "#contact",
+        note: "Use the project form",
+        status: "contact",
+      },
+      {
+        label: "Resume",
+        note: "Coming soon",
+        status: "planned",
+      },
+    ],
+  },
   hero: {
     title: "Mario Salamanca.",
     emphasis: "Software Developer. Systems Builder. Creative Founder.",

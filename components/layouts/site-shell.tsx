@@ -6,6 +6,12 @@ type SiteShellProps = {
   children: ReactNode;
 };
 
+const footerLinkClass =
+  "grid gap-1 text-left transition hover:text-[var(--color-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]";
+
+const footerPlaceholderClass =
+  "grid gap-1 text-left text-[var(--color-outline-strong)]/70";
+
 export function SiteShell({ children }: SiteShellProps) {
   const currentYear = new Date().getFullYear();
 
@@ -58,25 +64,74 @@ export function SiteShell({ children }: SiteShellProps) {
       <main>{children}</main>
 
       <footer className="border-t border-[var(--color-outline)]/70 bg-[var(--color-surface-low)]">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-6 px-4 py-16 text-center md:flex-row md:justify-between md:px-16 md:text-left">
-          <div className="font-serif text-2xl text-[var(--color-muted)]">
-            {siteData.name}
+        <div className="mx-auto grid w-full max-w-[1440px] gap-8 px-4 py-16 md:grid-cols-[1fr_auto] md:px-16">
+          <div>
+            <div className="font-serif text-2xl text-[var(--color-muted)]">
+              {siteData.name}
+            </div>
+            <div className="mt-3 text-base text-[var(--color-secondary)]">
+              © {currentYear} {siteData.fullName}.{" "}
+              {siteData.footer.trustStatement}
+            </div>
           </div>
-          <div className="text-base text-[var(--color-secondary)]">
-            © {currentYear} Mario Salamanca. Built for clarity, reliability,
-            and execution.
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 text-base text-[var(--color-outline-strong)]">
-            {siteData.footerLinks.map((link) => (
-              <Link
-                className="transition hover:text-[var(--color-primary)]"
-                href={link.href}
-                key={link.label}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+
+          <nav
+            aria-label="Professional links"
+            className="grid grid-cols-2 gap-x-6 gap-y-4 text-sm text-[var(--color-outline-strong)] sm:grid-cols-3 md:flex md:flex-wrap md:justify-end"
+          >
+            {siteData.footer.trustLinks.map((link) => {
+              const note =
+                "note" in link ? (
+                  <span className="text-xs text-[var(--color-muted)]">
+                    {link.note}
+                  </span>
+                ) : null;
+
+              if (link.status === "planned") {
+                return (
+                  <span
+                    aria-label={`${link.label}: ${link.note}`}
+                    className={footerPlaceholderClass}
+                    key={link.label}
+                  >
+                    <span>{link.label}</span>
+                    {note}
+                  </span>
+                );
+              }
+
+              const content = (
+                <>
+                  <span>{link.label}</span>
+                  {note}
+                </>
+              );
+
+              if (link.href.startsWith("#")) {
+                return (
+                  <Link
+                    className={footerLinkClass}
+                    href={link.href}
+                    key={link.label}
+                  >
+                    {content}
+                  </Link>
+                );
+              }
+
+              return (
+                <a
+                  className={footerLinkClass}
+                  href={link.href}
+                  key={link.label}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {content}
+                </a>
+              );
+            })}
+          </nav>
         </div>
       </footer>
     </div>
