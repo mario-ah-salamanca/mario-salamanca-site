@@ -114,6 +114,9 @@ export function ContactSection() {
           <Button className="mt-2 w-full" type="submit">
             {contact.submitLabel}
           </Button>
+          <p className="text-sm leading-6 text-[var(--color-muted)]">
+            {contact.privacyNote}
+          </p>
         </form>
       </div>
     </section>
