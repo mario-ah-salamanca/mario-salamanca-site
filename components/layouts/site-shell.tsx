@@ -28,7 +28,7 @@ export function SiteShell({ children }: SiteShellProps) {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--color-outline)]/50 bg-[var(--color-surface)]/80 backdrop-blur-md">
         <nav
           aria-label="Main navigation"
-          className="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between px-4 md:h-20 md:px-16"
+          className="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between gap-4 px-4 md:h-20 md:px-16 lg:h-24"
         >
           <Link
             className="inline-flex shrink-0 items-center rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
@@ -36,7 +36,7 @@ export function SiteShell({ children }: SiteShellProps) {
           >
             <Image
               alt={siteData.logo.alt}
-              className="h-auto w-[142px] md:w-[188px]"
+              className="h-auto w-[174px] sm:w-[220px] lg:w-[280px] xl:w-[328px]"
               height={siteData.logo.height}
               src={logoSrc}
               priority
@@ -44,7 +44,7 @@ export function SiteShell({ children }: SiteShellProps) {
             />
           </Link>
 
-          <div className="hidden items-center gap-6 text-sm font-medium md:flex">
+          <div className="hidden items-center gap-6 text-sm font-medium lg:flex">
             {siteData.nav.map((item, index) => (
               <Link
                 className={
@@ -61,14 +61,14 @@ export function SiteShell({ children }: SiteShellProps) {
           </div>
 
           <Link
-            className="hidden rounded-[4px] bg-[var(--color-primary-strong)] px-4 py-3 text-sm font-medium leading-none text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] md:inline-flex"
+            className="hidden rounded-[4px] bg-[var(--color-primary-strong)] px-4 py-3 text-sm font-medium leading-none text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] lg:inline-flex"
             href="#contact"
           >
             Start a project
           </Link>
 
           <Link
-            className="inline-flex rounded-[4px] bg-[var(--color-primary-strong)] px-3 py-3 text-xs font-medium uppercase leading-none tracking-[0.08em] text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] md:hidden"
+            className="inline-flex rounded-[4px] bg-[var(--color-primary-strong)] px-3 py-3 text-xs font-medium uppercase leading-none tracking-[0.08em] text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] lg:hidden"
             href="#contact"
           >
             Start a project
@@ -83,7 +83,7 @@ export function SiteShell({ children }: SiteShellProps) {
           <div>
             <Image
               alt={`${siteData.logo.alt} logo`}
-              className="h-auto w-[124px] md:w-[150px]"
+              className="h-auto w-[180px] sm:w-[232px] md:w-[288px] lg:w-[328px]"
               height={siteData.logo.height}
               src={logoSrc}
               width={siteData.logo.width}
