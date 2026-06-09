@@ -33,13 +33,12 @@ export const siteData = {
       },
       {
         label: "LinkedIn",
-        note: "Coming soon",
-        status: "planned",
+        href:"https://www.linkedin.com/in/mario-ah-salamanca/",
+        status: "active",
       },
       {
         label: "Email",
-        href: "#contact",
-        note: "Use the project form",
+        href: "mailto:mario.ah.salamanca@gmail.com",
         status: "contact",
       },
       {
