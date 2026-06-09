@@ -43,6 +43,10 @@ Settings -> Pages -> Build and deployment -> Source -> GitHub Actions.
 The `public/.nojekyll` file is included so GitHub Pages serves the exported
 Next.js assets correctly.
 
+Because this is deployed as a GitHub Pages project site, production builds in
+GitHub Actions automatically use `/mario-salamanca-site` as the Next.js base
+path so CSS and JavaScript assets load from the correct URL.
+
 ## Environment Variables
 
 Set this for Formspree-powered static forms:
