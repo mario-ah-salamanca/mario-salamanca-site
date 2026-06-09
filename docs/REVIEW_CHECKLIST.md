@@ -61,7 +61,7 @@ Check that the change supports the brand direction.
 ### Brand Questions
 
 * Does this still feel like Mario?
-* Does this strengthen the “Software Developer. Systems Builder. Creative Founder.” positioning?
+* Does this strengthen the “Software Engineer. Systems Builder. Creative Founder.” positioning?
 * Does this communicate reliability and execution?
 * Would this still make sense in 5–10 years?
 

@@ -39,7 +39,7 @@ The site should position Mario as someone who can:
 
 Preferred positioning language:
 
-> Software Developer. Systems Builder. Creative Founder.
+> Software Engineer. Systems Builder. Creative Founder.
 
 Do not replace this positioning casually. If changing it, preserve the combination of engineering reliability, systems thinking, and creative/founder ambition.
 

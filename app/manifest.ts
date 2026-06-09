@@ -4,7 +4,7 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Mario Salamanca | Software Developer & Systems Builder",
+    name: "Mario Salamanca | Software Engineer & Systems Builder",
     short_name: "M. Salamanca",
     description:
       "A personal brand platform for Mario Salamanca, software developer and systems builder.",

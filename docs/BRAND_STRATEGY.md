@@ -41,7 +41,7 @@ The website should make visitors feel:
 
 Primary positioning:
 
-> Software Developer. Systems Builder. Creative Founder.
+> Software Engineer. Systems Builder. Creative Founder.
 
 Expanded positioning:
 

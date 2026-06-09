@@ -24,7 +24,7 @@ const basePath = isGitHubActions ? `/${repositoryName}` : "";
 const withBasePath = (path: `/${string}`) => `${basePath}${path}`;
 
 export const metadata: Metadata = {
-  title: "Mario Salamanca | Software Developer & Systems Builder",
+  title: "Mario Salamanca | Software Engineer & Systems Builder",
   description:
     "I help founders, creators, and small teams turn messy ideas into clear websites, workflows, prototypes, and digital systems.",
   icons: {

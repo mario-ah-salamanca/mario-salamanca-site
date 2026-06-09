@@ -51,7 +51,7 @@ export const siteData = {
   },
   hero: {
     title: "Mario Salamanca.",
-    emphasis: "Software Developer. Systems Builder. Creative Founder.",
+    emphasis: "Software Engineer. Systems Builder. Creative Founder.",
     mobileTitle: "Mario Salamanca.",
     mobileEmphasis: "Systems Builder.",
     availability: "Available for new projects",
