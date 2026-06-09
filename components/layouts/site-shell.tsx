@@ -13,15 +13,8 @@ const footerLinkClass =
 const footerPlaceholderClass =
   "grid gap-1 text-left text-[var(--color-outline-strong)]/70";
 
-const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
-const repositoryName =
-  process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "mario-salamanca-site";
-const basePath = isGitHubActions ? `/${repositoryName}` : "";
-const withBasePath = (path: `/${string}`) => `${basePath}${path}`;
-
 export function SiteShell({ children }: SiteShellProps) {
   const currentYear = new Date().getFullYear();
-  const logoSrc = withBasePath(siteData.logo.src);
 
   return (
     <div className="deep-signal-bg min-h-screen overflow-x-hidden bg-[var(--color-void)] text-[var(--color-text)]">
@@ -38,7 +31,7 @@ export function SiteShell({ children }: SiteShellProps) {
               alt={siteData.logo.alt}
               className="h-auto w-[174px] sm:w-[220px] lg:w-[280px] xl:w-[328px]"
               height={siteData.logo.height}
-              src={logoSrc}
+              src={siteData.logo.src}
               priority
               width={siteData.logo.width}
             />
@@ -85,7 +78,7 @@ export function SiteShell({ children }: SiteShellProps) {
               alt={`${siteData.logo.alt} logo`}
               className="h-auto w-[180px] sm:w-[232px] md:w-[288px] lg:w-[328px]"
               height={siteData.logo.height}
-              src={logoSrc}
+              src={siteData.logo.src}
               width={siteData.logo.width}
             />
             <div className="mt-3 text-base text-[var(--color-secondary)]">

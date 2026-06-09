@@ -43,9 +43,15 @@ Settings -> Pages -> Build and deployment -> Source -> GitHub Actions.
 The `public/.nojekyll` file is included so GitHub Pages serves the exported
 Next.js assets correctly.
 
-Because this is deployed as a GitHub Pages project site, production builds in
-GitHub Actions automatically use `/mario-salamanca-site` as the Next.js base
-path so CSS and JavaScript assets load from the correct URL.
+The site is prepared for a custom GitHub Pages domain, so production builds use
+the domain root (`/`) instead of the repository project path. Keep `basePath`
+and `assetPrefix` unset unless the site is intentionally moved back to a
+sub-path deployment.
+
+Configure the custom domain in GitHub repository settings under
+Settings -> Pages -> Custom domain, then set the required DNS records with the
+domain provider. For GitHub Actions Pages deployments, a committed `CNAME` file
+is not required.
 
 ## Environment Variables
 
