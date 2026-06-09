@@ -1,5 +1,45 @@
 # Decision Log
 
+### 2026-06-09 — Serve GitHub Pages From Custom-Domain Root
+
+**Decision:**
+Remove the GitHub Actions-derived Next.js `basePath` and `assetPrefix` so the exported site serves from `/` for the custom domains.
+
+**Files Changed:**
+- `next.config.ts`
+- `app/layout.tsx`
+- `components/layouts/site-shell.tsx`
+- `README.md`
+- `docs/DECISIONS.md`
+- `docs/PROGRESS_LOG.md`
+
+**Context:**
+The site was originally deployed as a GitHub Pages project site at `/mario-salamanca-site/`. Mario has purchased `mario-ah-salamanca.com` and `mario-ah-salamanca.eu`, so the production site should no longer emit repository-prefixed asset or metadata paths.
+
+**Options Considered:**
+- Keep the existing project-page base path for GitHub Actions builds.
+- Add another environment flag to switch between project-page and custom-domain builds.
+- Make the custom-domain root the default deployment target.
+
+**Reasoning:**
+The custom domains should serve the site from the URL root. Leaving the repository slug in production builds would risk broken CSS, JavaScript, logo, favicon, and manifest paths after the domain migration.
+
+**Consequences:**
+GitHub Pages repository settings and DNS must be configured for the chosen custom domain. If the site is ever intentionally moved back to a GitHub project-page URL, `basePath` and root-relative public asset paths will need to be revisited.
+
+**Checks Run:**
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed after approving network access for Google Fonts: `GITHUB_ACTIONS=true GITHUB_REPOSITORY=mario-ah-salamanca/mario-salamanca-site npm run build`
+- Passed with no matches: `rg "/mario-salamanca-site/" out`
+- Passed with no matches: `rg "href=\"/mario-salamanca-site|src=\"/mario-salamanca-site|url\(/mario-salamanca-site" out`
+
+**Known Issues:**
+- A primary domain decision is still needed between `mario-ah-salamanca.com` and `mario-ah-salamanca.eu`; the other domain should likely redirect to the primary through DNS/registrar or hosting configuration.
+
+**Next Recommended Task:**
+Configure the chosen custom domain in GitHub Pages settings and DNS, then verify HTTPS.
+
 ### 2026-06-09 — Use Custom PNG Favicons Across Devices
 
 **Decision:**  

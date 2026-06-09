@@ -4,6 +4,46 @@
 
 ### Completed
 
+- Removed the GitHub Actions-derived Next.js `basePath` and `assetPrefix` so production exports serve from the custom-domain root.
+- Replaced favicon metadata paths and MAHS logo image paths with root-relative public asset paths.
+- Updated README deployment notes for custom-domain GitHub Pages hosting.
+- Added a decision-log entry for the custom-domain root-path migration.
+- Verified a GitHub Actions-style build no longer emits root-relative `/mario-salamanca-site/` asset or link paths.
+
+### Files Changed
+
+- `next.config.ts`
+- `app/layout.tsx`
+- `components/layouts/site-shell.tsx`
+- `README.md`
+- `docs/DECISIONS.md`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+This prepares the site for `mario-ah-salamanca.com` or `mario-ah-salamanca.eu` so exported CSS, JavaScript, logo, favicon, and manifest paths resolve from `/` instead of the old GitHub project-page path.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Failed in sandbox, then passed after approving network access for Google Fonts: `GITHUB_ACTIONS=true GITHUB_REPOSITORY=mario-ah-salamanca/mario-salamanca-site npm run build`
+- Passed with no matches: `rg "/mario-salamanca-site/" out`
+- Passed with no matches: `rg "href=\"/mario-salamanca-site|src=\"/mario-salamanca-site|url\(/mario-salamanca-site" out`
+
+### Known Issues
+
+- A primary domain decision is still needed between `mario-ah-salamanca.com` and `mario-ah-salamanca.eu`.
+- GitHub Pages custom-domain settings, DNS records, and HTTPS enforcement still need to be configured outside this codebase.
+
+### Next Recommended Task
+
+- Configure the chosen custom domain in GitHub Pages settings and DNS, then verify HTTPS.
+
+## 2026-06-09
+
+### Completed
+
 - Fixed the Aurora WebGL background lint failures by removing the render-time ref mutation, tightening effect dependencies, and replacing the mutable `program` binding with a stable constant.
 - Restored reduced-motion support inside the Aurora effect by rendering a static frame when `prefers-reduced-motion: reduce` is active and cancelling the animation loop.
 - Cleaned the hero Aurora markup and renamed the color constant away from the old Liquid Ether terminology.

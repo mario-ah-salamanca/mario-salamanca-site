@@ -1,5 +1,5 @@
 Create a task plan for the next improvement.
-Read TASK_TEMPLATE.md for the task format.
+Read docs/TASK_TEMPLATE.md for the task format.
 The task should include:
 - goal
 - user/audience benefit
