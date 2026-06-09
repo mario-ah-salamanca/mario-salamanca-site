@@ -4,6 +4,52 @@
 
 ### Completed
 
+- Added the MAHS logo asset to the shared site data model.
+- Replaced the main navigation text brand with the MAHS SVG logo.
+- Added a smaller footer logo on the left side while preserving aspect ratio.
+- Increased both header and footer logo sizes so the mark is more distinguishable.
+- Kept text identity available through `siteData.name`, `siteData.fullName`, and logo alt text.
+- Preserved GitHub Pages asset paths for the static logo file.
+
+### Files Changed
+
+- `data/site.ts`
+- `components/layouts/site-shell.tsx`
+- `public/brand/mahs-logo.svg`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+This gives the site a stronger branded first impression in the header and a consistent visual signature in the footer without hardcoding the logo outside the central content model.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed: desktop screenshot check with Playwright at `1440x900`
+- Passed: mobile screenshot check with Playwright at `390x844`
+- Passed after size adjustment: `npm run lint`
+- Passed after size adjustment: `npm run build`
+- Not run: GitHub Pages-style build after the logo change because approval was declined after the sandbox blocked Google font fetching.
+
+### Known Issues
+
+- GitHub Pages base-path output was not reverified after the logo change, though the logo uses the same base-path helper pattern as the favicon metadata.
+- Rendered QA surfaced existing console warnings unrelated to the logo task: a React hydration mismatch on form fields during browser automation and a `THREE.Clock` deprecation warning in the background effect.
+- Fresh screenshots after the size adjustment were blocked by the local dev server's stale Next lock; the final size adjustment was verified through lint/build and code inspection.
+
+### Follow-up Todo
+
+- Move the page header into its own dedicated layout section/component.
+
+### Next Recommended Task
+
+- Add contact form success and error states.
+
+## 2026-06-09
+
+### Completed
+
 - Added explicit favicon metadata for browser icon sizes from 16x16 through 512x512.
 - Added an Apple touch icon path for mobile home-screen saves.
 - Added a static web manifest for installable/mobile contexts.

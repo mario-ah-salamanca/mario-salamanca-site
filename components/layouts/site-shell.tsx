@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { siteData } from "@/data/site";
 
@@ -12,8 +13,15 @@ const footerLinkClass =
 const footerPlaceholderClass =
   "grid gap-1 text-left text-[var(--color-outline-strong)]/70";
 
+const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+const repositoryName =
+  process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "mario-salamanca-site";
+const basePath = isGitHubActions ? `/${repositoryName}` : "";
+const withBasePath = (path: `/${string}`) => `${basePath}${path}`;
+
 export function SiteShell({ children }: SiteShellProps) {
   const currentYear = new Date().getFullYear();
+  const logoSrc = withBasePath(siteData.logo.src);
 
   return (
     <div className="deep-signal-bg min-h-screen overflow-x-hidden bg-[var(--color-void)] text-[var(--color-text)]">
@@ -23,10 +31,17 @@ export function SiteShell({ children }: SiteShellProps) {
           className="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between px-4 md:h-20 md:px-16"
         >
           <Link
-            className="font-serif text-xl font-bold leading-none text-[var(--color-text)] md:text-2xl"
+            className="inline-flex shrink-0 items-center rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
             href="#"
           >
-            {siteData.name}
+            <Image
+              alt={siteData.logo.alt}
+              className="h-auto w-[142px] md:w-[188px]"
+              height={siteData.logo.height}
+              src={logoSrc}
+              priority
+              width={siteData.logo.width}
+            />
           </Link>
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
@@ -66,9 +81,13 @@ export function SiteShell({ children }: SiteShellProps) {
       <footer className="border-t border-[var(--color-outline)]/70 bg-[var(--color-surface-low)]">
         <div className="mx-auto grid w-full max-w-[1440px] gap-8 px-4 py-16 md:grid-cols-[1fr_auto] md:px-16">
           <div>
-            <div className="font-serif text-2xl text-[var(--color-muted)]">
-              {siteData.name}
-            </div>
+            <Image
+              alt={`${siteData.logo.alt} logo`}
+              className="h-auto w-[124px] md:w-[150px]"
+              height={siteData.logo.height}
+              src={logoSrc}
+              width={siteData.logo.width}
+            />
             <div className="mt-3 text-base text-[var(--color-secondary)]">
               © {currentYear} {siteData.fullName}.{" "}
               {siteData.footer.trustStatement}

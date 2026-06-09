@@ -3,6 +3,12 @@ import type { IconName } from "@/components/ui/icons";
 export const siteData = {
   name: "M. Salamanca",
   fullName: "Mario Salamanca",
+  logo: {
+    src: "/brand/mahs-logo.svg",
+    alt: "Mario Salamanca",
+    width: 1916,
+    height: 821,
+  },
   nav: [
     { label: "Home", href: "#" },
     { label: "Proof", href: "#credibility" },
