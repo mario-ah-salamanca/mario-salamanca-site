@@ -1,5 +1,43 @@
 # Decision Log
 
+### 2026-06-09 — Use Custom PNG Favicons Across Devices
+
+**Decision:**  
+Use the custom PNG favicon set from `public/icons/` as the active icon source, remove the default template `app/favicon.ico`, and add a static web manifest for mobile/installable contexts.
+
+**Files Changed:**  
+- `app/layout.tsx`
+- `app/manifest.ts`
+- `app/favicon.ico`
+- `public/icons/`
+- `docs/PROGRESS_LOG.md`
+- `docs/DECISIONS.md`
+
+**Context:**  
+The site had newly added favicon PNGs, but Next.js only auto-detects specific app icon conventions. The default `favicon.ico` was still present and could make the browser tab use the template icon instead of Mario's custom brand asset.
+
+**Options Considered:**  
+- Keep `app/favicon.ico` and rely on browser fallback behavior.
+- Rename PNGs to Next.js file-convention names in `app/`.
+- Serve the PNG set from `public/icons/` and wire explicit metadata plus a manifest.
+
+**Reasoning:**  
+Explicit metadata keeps browser icon behavior predictable, `public/icons/` makes static export paths easy to verify, and the manifest covers Android/installable contexts. Removing the template `.ico` prevents the default asset from competing with the custom favicon set.
+
+**Consequences:**  
+The active favicon source is now `public/icons/`. The original `app/favicon-*.png` files remain as duplicate source assets until a cleanup task removes or relocates them.
+
+**Checks Run:**  
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed: `GITHUB_ACTIONS=true GITHUB_REPOSITORY=mario-ah-salamanca/mario-salamanca-site npm run build`
+
+**Known Issues:**  
+- Duplicate `app/favicon-*.png` files remain and should be cleaned up if `public/icons/` is accepted as the canonical icon source.
+
+**Next Recommended Task:**  
+Add contact form success and error states.
+
 ### 2026-06-09 — Add Phase 1 Trust Link Structure
 
 **Decision:**  
