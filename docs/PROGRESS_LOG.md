@@ -4,6 +4,45 @@
 
 ### Completed
 
+- Fixed the Aurora WebGL background lint failures by removing the render-time ref mutation, tightening effect dependencies, and replacing the mutable `program` binding with a stable constant.
+- Restored reduced-motion support inside the Aurora effect by rendering a static frame when `prefers-reduced-motion: reduce` is active and cancelling the animation loop.
+- Cleaned the hero Aurora markup and renamed the color constant away from the old Liquid Ether terminology.
+- Removed the rectangular `deep-glow` box shadow from the hero content wrapper so the desktop first viewport reads cleaner against the aurora.
+- Rechecked desktop and mobile first-viewport screenshots against the local dev server.
+
+### Files Changed
+
+- `components/backgrounds/aurora.tsx`
+- `components/sections/hero-section.tsx`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+This makes the new Aurora hero implementation shippable for the production landing page: lint is clean, reduced-motion users are respected, and the first viewport better matches the premium, calm brand direction.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `git diff --check`
+- Passed: `npm run build`
+- Passed: desktop screenshot check with Playwright CLI at `1440x900` from `http://localhost:3000/`
+- Passed: mobile screenshot check with Playwright CLI at `390x844` from `http://localhost:3000/`
+- Passed: contact-anchor screenshot check with Playwright CLI from `http://localhost:3000/#contact`
+- Blocked: richer temporary Playwright interaction/console test because the CLI package did not expose `@playwright/test` to a spec outside the project dependency graph.
+
+### Known Issues
+
+- Existing dev-server hydration warnings still appear for form fields with injected `caret-color: transparent` styles; this predates and appears unrelated to the Aurora cleanup.
+- Reduced-motion behavior was verified by code path, lint, build, and static screenshot compatibility; the blocked temporary Playwright spec prevented automated runtime assertion of the reduced-motion media emulation.
+
+### Next Recommended Task
+
+- Add contact form success and error states.
+
+## 2026-06-09
+
+### Completed
+
 - Reviewed the staged replacement of the Liquid Ether hero background with the new Aurora WebGL background.
 - Verified the change keeps the homepage static-export compatible.
 - Captured desktop and mobile rendered screenshots for first-viewport readability.
