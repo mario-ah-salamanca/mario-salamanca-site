@@ -215,6 +215,11 @@ export const siteData = {
     title: "Have a messy idea?",
     body: "Send me the rough version - the notes, screenshots, half-clear concept, unfinished plan, or problem you cannot structure yet. I'll help you find the next clear step.",
     submitLabel: "Send the messy version",
+    pendingLabel: "Sending...",
+    successMessage:
+      "Message sent. I'll review the context and reply with the next clear step.",
+    errorMessage:
+      "Something went wrong while sending. Please try again, or use the email link in the footer if the issue continues.",
     privacyNote:
       "Privacy note: Your details are used only to reply to this inquiry. Because this site is operated from Germany, I keep the first exchange minimal; this form is processed through Formspree, so please avoid secrets or confidential data.",
   },

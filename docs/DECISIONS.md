@@ -1,5 +1,45 @@
 # Decision Log
 
+### 2026-06-18 — Handle Contact Form Feedback Client-Side
+
+**Decision:**
+Keep Formspree as the contact form destination, but handle the contact form submit in a small client component so the page can show pending, success, and error states without leaving the site.
+
+**Files Changed:**
+- `components/sections/contact-section.tsx`
+- `components/sections/contact-form.tsx`
+- `components/ui/button.tsx`
+- `data/site.ts`
+- `docs/PROGRESS_LOG.md`
+- `docs/DECISIONS.md`
+
+**Context:**
+The production landing page needed a clear confirmation path for contact submissions. The site is still deployed as a static GitHub Pages export, so server actions, API routes, and backend-only behavior were not appropriate for this task.
+
+**Options Considered:**
+- Keep the existing plain HTML POST and let Formspree show the result page.
+- Add a Next.js server action or route handler to proxy the submit.
+- Submit directly to Formspree from a small client component and render in-page status feedback.
+
+**Reasoning:**
+Client-side Formspree submission gives visitors immediate feedback while preserving static export compatibility and avoiding new dependencies or backend infrastructure. Keeping the client boundary limited to the form also avoids turning the whole contact section into client-rendered UI.
+
+**Consequences:**
+The live success path depends on `NEXT_PUBLIC_FORMSPREE_ENDPOINT` being configured at build time and on Formspree accepting the request. If the site later moves to server-backed lead capture, this client component can be replaced or adapted without changing the rest of the section.
+
+**Checks Run:**
+- Passed: `npm run lint`
+- Passed: `git diff --check`
+- Passed: `npm run build`
+- Passed: mocked browser QA against `http://localhost:3000/#contact` using Playwright from `/tmp/contact-form-qa.cjs`
+
+**Known Issues:**
+- Browser QA surfaced existing WebGL GPU performance warnings from the background effect; no contact-form console errors were observed.
+- On mobile, direct `#contact` anchor navigation can leave the top of the contact heading close to or partly under the sticky header.
+
+**Next Recommended Task:**
+Add an Open Graph image.
+
 ### 2026-06-09 — Serve GitHub Pages From Custom-Domain Root
 
 **Decision:**

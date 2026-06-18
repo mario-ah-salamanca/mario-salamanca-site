@@ -4,6 +4,7 @@ import { cn } from "@/lib/cn";
 
 type ButtonProps = {
   children: ReactNode;
+  disabled?: boolean;
   href?: string;
   type?: "button" | "submit";
   variant?: "primary" | "secondary";
@@ -18,10 +19,11 @@ const variants = {
 };
 
 const baseClass =
-  "inline-flex min-h-12 items-center justify-center gap-2 rounded-[4px] px-6 py-3 text-sm font-medium uppercase leading-none tracking-[0.08em] transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4";
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-[4px] px-6 py-3 text-sm font-medium uppercase leading-none tracking-[0.08em] transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-65";
 
 export function Button({
   children,
+  disabled = false,
   href,
   type = "button",
   variant = "primary",
@@ -38,7 +40,7 @@ export function Button({
   }
 
   return (
-    <button className={buttonClass} type={type}>
+    <button className={buttonClass} disabled={disabled} type={type}>
       {children}
     </button>
   );

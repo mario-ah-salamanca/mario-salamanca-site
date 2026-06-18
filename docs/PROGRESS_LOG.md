@@ -1,5 +1,44 @@
 # Progress Log
 
+## 2026-06-18
+
+### Completed
+
+- Added accessible pending, success, and error states to the contact form.
+- Kept the Formspree endpoint as the submission target while handling the submit request client-side for in-page feedback.
+- Disabled contact form fields during submission to avoid duplicate sends.
+- Added an `aria-live` status region for confirmation and failure messages.
+- Preserved the existing required fields and privacy note.
+
+### Files Changed
+
+- `components/sections/contact-section.tsx`
+- `components/sections/contact-form.tsx`
+- `components/ui/button.tsx`
+- `data/site.ts`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+This closes the main contact-flow trust gap in Phase 1: visitors now know when their message is sending, whether it was received, and what to do if submission fails.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `git diff --check`
+- Passed: `npm run build`
+- Passed: mocked browser QA against `http://localhost:3000/#contact` using Playwright from `/tmp/contact-form-qa.cjs`
+
+### Known Issues
+
+- The live success path still depends on a configured `NEXT_PUBLIC_FORMSPREE_ENDPOINT` and Formspree accepting the request.
+- Browser QA surfaced existing WebGL GPU performance warnings from the background effect; no contact-form console errors were observed.
+- On mobile, direct `#contact` anchor navigation can leave the top of the contact heading close to or partly under the sticky header.
+
+### Next Recommended Task
+
+- Add an Open Graph image.
+
 ## 2026-06-09
 
 ### Completed
