@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 type ContactFormCopy = {
@@ -37,6 +37,10 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
       : submissionState === "error"
         ? contact.errorMessage
         : "";
+
+  useEffect(() => {
+    formRef.current?.setAttribute("data-enhanced", "true");
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -81,6 +85,7 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
       ref={formRef}
       action={endpoint}
       className="mt-7 grid gap-5"
+      data-enhanced="false"
       method="POST"
       onSubmit={handleSubmit}
     >

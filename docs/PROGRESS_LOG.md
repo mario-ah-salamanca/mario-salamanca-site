@@ -4,6 +4,49 @@
 
 ### Completed
 
+- Initialized Playwright for the project with `npm init playwright@latest`.
+- Added `@playwright/test`, `playwright.config.ts`, and an `npm run test:e2e` script.
+- Configured Playwright to run Chromium tests against a dedicated Next dev server on `localhost:3100`.
+- Added contact-form e2e coverage for Formspree AJAX success and AJAX-blocked native POST fallback.
+- Added a non-visual hydration marker to the contact form so tests wait for enhanced client behavior before submitting.
+- Created issue/task files for polishing Formspree AJAX/reCAPTCHA behavior and planning a Google Calendar-connected scheduling flow.
+
+### Files Changed
+
+- `.gitignore`
+- `package.json`
+- `package-lock.json`
+- `playwright.config.ts`
+- `components/sections/contact-form.tsx`
+- `tests/contact-form.spec.ts`
+- `docs/issues/001-formspree-ajax-recaptcha.md`
+- `docs/issues/002-google-calendar-call-scheduling.md`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+The project now has real browser coverage for the contact form's critical lead-capture behavior, and the next lead-generation improvements are captured as scoped, reviewable tasks.
+
+### Checks Run
+
+- Passed: `npm run test:e2e -- --reporter=line`
+- Passed: `npm run lint`
+- Passed: `git diff --check`
+- Passed: `npm run build`
+
+### Known Issues
+
+- Playwright local-server tests require access to bind and connect to `localhost:3100`; the sandboxed run needed escalation because local connection probes returned `EPERM`.
+- The Formspree AJAX/reCAPTCHA production policy still needs a decision in the Formspree dashboard.
+
+### Next Recommended Task
+
+- Resolve Issue 001 by choosing the preferred Formspree AJAX/reCAPTCHA policy, then update the contact form and docs accordingly.
+
+## 2026-06-18
+
+### Completed
+
 - Debugged the Formspree contact-form regression against the real endpoint.
 - Confirmed `https://formspree.io/f/xlgknwgg` returns HTTP 403 for AJAX submissions when the form requires a custom key or reCAPTCHA settings change.
 - Added a native HTML POST fallback when Formspree rejects the client-side AJAX path for that specific protection response.
