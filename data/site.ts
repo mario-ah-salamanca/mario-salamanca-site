@@ -1,5 +1,18 @@
 import type { IconName } from "@/components/ui/icons";
 
+type FooterTrustLink =
+  | {
+      label: string;
+      href: string;
+      note?: string;
+      status: "active" | "contact";
+    }
+  | {
+      label: string;
+      note: string;
+      status: "planned";
+    };
+
 export const siteData = {
   name: "M. Salamanca",
   fullName: "Mario Salamanca",
@@ -33,7 +46,7 @@ export const siteData = {
       },
       {
         label: "LinkedIn",
-        href:"https://www.linkedin.com/in/mario-ah-salamanca/",
+        href: "https://www.linkedin.com/in/mario-ah-salamanca/",
         status: "active",
       },
       {
@@ -43,10 +56,10 @@ export const siteData = {
       },
       {
         label: "Resume",
-        note: "Coming soon",
-        status: "planned",
+        href: "/resume",
+        status: "active",
       },
-    ],
+    ] as FooterTrustLink[],
   },
   hero: {
     title: "Mario Salamanca.",
@@ -62,6 +75,8 @@ export const siteData = {
     mobilePrimaryCta: "Start a project",
     secondaryCta: "View selected work",
     mobileSecondaryCta: "View work",
+    resumeCta: "View resume and download CV",
+    resumeHref: "/resume",
     stack: [
       "C / C++ / Python",
       "React / Next.js",

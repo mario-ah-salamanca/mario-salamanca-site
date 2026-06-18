@@ -1,5 +1,51 @@
 # Decision Log
 
+### 2026-06-18 — Serve Resume From a Static Markdown Source
+
+**Decision:**
+Add `/resume` as the permanent public resume page, read `public/CV/mario-salamanca-cv.md` at build time, render it with `remark` and `remark-html`, and link the page to the public PDF at `/CV/mario-salamanca-cv.pdf`.
+
+**Files Changed:**
+- `app/resume/page.tsx`
+- `app/layout.tsx`
+- `app/globals.css`
+- `components/sections/resume-markdown.tsx`
+- `components/sections/hero-section.tsx`
+- `components/layouts/site-shell.tsx`
+- `data/site.ts`
+- `package.json`
+- `package-lock.json`
+- `docs/PROGRESS_LOG.md`
+- `docs/DECISIONS.md`
+
+**Context:**
+Issue #4 needed a public CV download and a real resume link before increased recruiter and hiring-manager traffic. Mario also wanted the CV page to be readable from the Markdown source instead of hand-built HTML.
+
+**Options Considered:**
+- Link directly to the PDF only.
+- Add a full Markdown dependency or MDX pipeline.
+- Render the existing CV Markdown through `remark` and `remark-html` during static build.
+
+**Reasoning:**
+A static `/resume` route gives recruiters a readable page and a stable PDF download path without changing the GitHub Pages deployment model. `remark` keeps Markdown handling on a proven ecosystem path that can later support blog or resource content more naturally than a hand-rolled parser.
+
+**Consequences:**
+The CV page now depends on `public/CV/mario-salamanca-cv.md`, `remark`, and `remark-html`. The renderer uses the default sanitized HTML output from `remark-html` and normalizes the current Pandoc-style CV attributes before conversion. A future database-backed blog or Markdown upload workflow should be handled as a separate architecture task because it affects content storage, rendering security, SEO, and deployment assumptions.
+
+**Checks Run:**
+- Passed: `npm run lint`
+- Passed: `git diff --check`
+- Passed: `npm run build`
+- Passed: `rg "resume|cv|mario-salamanca-cv.pdf|mario-salamanca" out data public app components`
+- Passed: `find out -maxdepth 3 -type f | sort | rg "resume|CV|cv|brand/CV|index.html"`
+- Not fixed: `npm install` reported two moderate dependency vulnerabilities; no forced audit fix was applied because that can make broad dependency changes.
+
+**Known Issues:**
+- The published CV content should be reviewed before deployment if address, phone, or other personal details should be removed.
+
+**Next Recommended Task:**
+Add an Open Graph image for stronger sharing previews.
+
 ### 2026-06-18 — Handle Contact Form Feedback Client-Side
 
 **Decision:**

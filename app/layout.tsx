@@ -77,6 +77,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${geist.variable} ${geistMono.variable} ${newsreader.variable}`}
     >
       <body>{children}</body>

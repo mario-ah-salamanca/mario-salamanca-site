@@ -119,7 +119,7 @@ export function SiteShell({ children }: SiteShellProps) {
                 </>
               );
 
-              if (link.href.startsWith("#")) {
+              if (link.href.startsWith("#") || link.href.startsWith("/")) {
                 return (
                   <Link
                     className={footerLinkClass}
@@ -136,8 +136,8 @@ export function SiteShell({ children }: SiteShellProps) {
                   className={footerLinkClass}
                   href={link.href}
                   key={link.label}
-                  rel="noreferrer"
-                  target="_blank"
+                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
                 >
                   {content}
                 </a>
