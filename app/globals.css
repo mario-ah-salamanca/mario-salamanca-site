@@ -162,6 +162,106 @@ textarea {
   color: rgba(178, 197, 255, 0.94);
 }
 
+.resume-markdown a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(178, 197, 255, 0.4);
+  text-underline-offset: 4px;
+  transition: color 200ms ease;
+}
+
+.resume-markdown a:hover {
+  color: var(--color-secondary);
+}
+
+.resume-markdown h2,
+.resume-markdown h3 {
+  border-top: 1px solid rgba(67, 70, 83, 0.6);
+  color: var(--color-text);
+  font-family: var(--font-newsreader), serif;
+  font-weight: 600;
+  line-height: 1.16;
+  padding-top: 2rem;
+}
+
+.resume-markdown h2:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.resume-markdown h2 {
+  font-size: 2rem;
+}
+
+.resume-markdown h3 {
+  font-size: 1.5rem;
+}
+
+.resume-markdown strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.resume-markdown em {
+  color: var(--color-outline-strong);
+}
+
+.resume-markdown hr {
+  border: 0;
+  border-top: 1px solid rgba(67, 70, 83, 0.6);
+  width: 100%;
+}
+
+.resume-markdown ul {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.resume-markdown li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.resume-markdown li::before {
+  background: var(--color-secondary);
+  border-radius: 999px;
+  content: "";
+  height: 0.5rem;
+  left: 0;
+  position: absolute;
+  top: 0.72em;
+  width: 0.5rem;
+}
+
+.resume-markdown li p {
+  margin: 0;
+}
+
+.resume-markdown table {
+  border-collapse: collapse;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.resume-markdown th,
+.resume-markdown td {
+  border: 1px solid rgba(67, 70, 83, 0.72);
+  padding: 0.85rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.resume-markdown th {
+  background: rgba(91, 140, 255, 0.11);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.resume-markdown td {
+  min-width: 180px;
+}
+
 @keyframes signal-pulse {
   0%,
   100% {
@@ -205,6 +305,12 @@ textarea {
   .glass-panel {
     background: rgba(13, 19, 32, 0.68);
     border-color: rgba(13, 19, 32, 0.12);
+  }
+}
+
+@media (min-width: 768px) {
+  .resume-markdown h2 {
+    font-size: 2.5rem;
   }
 }
 
