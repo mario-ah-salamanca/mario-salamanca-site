@@ -4,6 +4,56 @@
 
 ### Completed
 
+- Added a static `/resume` page for recruiters and hiring managers.
+- Rendered the public CV from `public/CV/mario-salamanca-cv.md` using `remark` and `remark-html`.
+- Added download and open-PDF actions for the public CV PDF.
+- Replaced the footer Resume placeholder with a real `/resume` link.
+- Added a restrained homepage hero link to the resume and CV download path.
+- Preserved static GitHub Pages export compatibility.
+
+### Files Changed
+
+- `app/resume/page.tsx`
+- `app/layout.tsx`
+- `app/globals.css`
+- `components/sections/resume-markdown.tsx`
+- `components/sections/hero-section.tsx`
+- `components/layouts/site-shell.tsx`
+- `data/site.ts`
+- `package.json`
+- `package-lock.json`
+- `public/CV/mario-salamanca-cv.pdf`
+- `public/CV/mario-salamanca-cv.md`
+- `public/brand/CV_PIC.JPG`
+- `docs/PROGRESS_LOG.md`
+- `docs/DECISIONS.md`
+
+### Why It Matters
+
+This closes the urgent resume-access gap for the Job Application Readiness Sprint: visitors can now read the CV on-site, open the PDF, or download it from a stable public path.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `git diff --check`
+- Passed: `npm run build`
+- Passed: `rg "resume|cv|mario-salamanca-cv.pdf|mario-salamanca" out data public app components`
+- Passed: `find out -maxdepth 3 -type f | sort | rg "resume|CV|cv|brand/CV|index.html"`
+- Not fixed: `npm install` reported two moderate dependency vulnerabilities; no forced audit fix was applied because that can make broad dependency changes.
+
+### Known Issues
+
+- The public CV content includes the contact and location details present in `public/CV/mario-salamanca-cv.md` and `public/CV/mario-salamanca-cv.pdf`; review those before deployment if any detail should not be public.
+- The resume page uses a build-time `remark` pipeline for Markdown-to-HTML. A broader blog/content pipeline should still be planned separately.
+
+### Next Recommended Task
+
+- Add an Open Graph image for stronger job-application and social sharing previews.
+
+## 2026-06-18
+
+### Completed
+
 - Added accessible pending, success, and error states to the contact form.
 - Kept the Formspree endpoint as the submission target while handling the submit request client-side for in-page feedback.
 - Disabled contact form fields during submission to avoid duplicate sends.
