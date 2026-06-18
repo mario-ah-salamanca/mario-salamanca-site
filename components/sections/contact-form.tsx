@@ -18,6 +18,13 @@ type ContactFormProps = {
   contact: ContactFormCopy;
 };
 
+function isAjaxProtectionResponse(response: Response, responseText: string) {
+  return (
+    response.status === 403 &&
+    /submit via AJAX|reCAPTCHA must be disabled/i.test(responseText)
+  );
+}
+
 export function ContactForm({ endpoint, contact }: ContactFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [submissionState, setSubmissionState] =
@@ -33,6 +40,7 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
 
     if (!endpoint) {
       setSubmissionState("error");
@@ -51,6 +59,13 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
       });
 
       if (!response.ok) {
+        const responseText = await response.text();
+
+        if (isAjaxProtectionResponse(response, responseText)) {
+          form.submit();
+          return;
+        }
+
         throw new Error("Form submission failed.");
       }
 
@@ -69,7 +84,6 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
       method="POST"
       onSubmit={handleSubmit}
     >
-      {/* TODO: Configure NEXT_PUBLIC_FORMSPREE_ENDPOINT before launch. */}
       <label className="grid gap-2" htmlFor="contact-name">
         <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
           Name

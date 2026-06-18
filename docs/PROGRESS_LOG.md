@@ -4,6 +4,42 @@
 
 ### Completed
 
+- Debugged the Formspree contact-form regression against the real endpoint.
+- Confirmed `https://formspree.io/f/xlgknwgg` returns HTTP 403 for AJAX submissions when the form requires a custom key or reCAPTCHA settings change.
+- Added a native HTML POST fallback when Formspree rejects the client-side AJAX path for that specific protection response.
+- Preserved the existing in-page success state for Formspree configurations that accept AJAX.
+- Removed the stale contact-form endpoint TODO because the endpoint is now configured.
+
+### Files Changed
+
+- `components/sections/contact-form.tsx`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+This restores the contact form's ability to use Formspree's standard submission flow while keeping the static GitHub Pages deployment and existing form fields intact.
+
+### Checks Run
+
+- Passed: direct Formspree POST returned the expected diagnostic response: HTTP 403 with the AJAX/reCAPTCHA settings message.
+- Passed: `npm run lint`
+- Passed: `git diff --check`
+- Passed: `npm run build`
+- Passed: `rg "xlgknwgg|submit via AJAX|reCAPTCHA must be disabled" out components docs .env .env.example README.md .github/workflows/deploy.yml`
+- Not completed: rendered Playwright interaction QA. `npx playwright` is available, but this repo does not have `@playwright/test` installed and transient `npm exec --package=playwright` did not complete without adding a project dependency.
+
+### Known Issues
+
+- Native fallback redirects the visitor to Formspree's hosted flow when AJAX is blocked, so the in-page success message is only available if Formspree is configured to accept AJAX submissions.
+
+### Next Recommended Task
+
+- Decide whether to disable reCAPTCHA/custom-key protection in Formspree for in-page AJAX success, or keep the safer hosted Formspree fallback behavior.
+
+## 2026-06-18
+
+### Completed
+
 - Added a static `/resume` page for recruiters and hiring managers.
 - Rendered the public CV from `public/CV/mario-salamanca-cv.md` using `remark` and `remark-html`.
 - Added download and open-PDF actions for the public CV PDF.
