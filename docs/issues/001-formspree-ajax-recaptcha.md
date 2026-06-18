@@ -1,5 +1,12 @@
 # Issue 001 - Make Formspree AJAX and reCAPTCHA Work Elegantly
 
+## Status
+
+Implemented in code and docs on 2026-06-18. The selected production policy is
+to keep Formspree hosted spam protection as the default fallback, preserve
+in-page AJAX success when Formspree accepts it, and avoid exposing private
+Formspree or reCAPTCHA secrets in the static GitHub Pages build.
+
 ## Task Name
 
 Make Formspree AJAX and reCAPTCHA work elegantly
@@ -37,12 +44,12 @@ Visitors can submit an inquiry with confidence, receive immediate feedback, and 
 
 ## Implementation Steps
 
-1. Review Formspree's current AJAX, custom-key, and reCAPTCHA settings for this form.
-2. Decide whether the preferred production path is Formspree AJAX with reCAPTCHA disabled, AJAX with a custom key, or native hosted Formspree verification.
-3. Update the contact-form implementation so success, error, and fallback states are explicit and polished.
-4. Add or update Playwright coverage for AJAX success, Formspree rejection, and fallback behavior.
-5. Verify that production export includes the configured endpoint and no private values.
-6. Update README and decision/progress docs with the chosen Formspree policy.
+1. Done - Reviewed the current code path and Formspree protection response.
+2. Done - Selected native hosted Formspree verification as the default protected path.
+3. Done - Updated the contact form so success, error, and fallback states are explicit.
+4. Done - Updated Playwright coverage for AJAX success and AJAX-blocked fallback behavior.
+5. Done - Verified the export includes only the intended public endpoint and no private secret values.
+6. Done - Updated README and decision/progress docs with the selected Formspree policy.
 
 ## Risks
 

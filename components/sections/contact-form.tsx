@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 
 type ContactFormCopy = {
   errorMessage: string;
+  fallbackMessage: string;
   pendingLabel: string;
   privacyNote: string;
   submitLabel: string;
   successMessage: string;
 };
 
-type SubmissionState = "idle" | "pending" | "success" | "error";
+type SubmissionState = "idle" | "pending" | "success" | "fallback" | "error";
 
 type ContactFormProps = {
   endpoint?: string;
@@ -31,9 +32,12 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
     useState<SubmissionState>("idle");
 
   const isPending = submissionState === "pending";
+  const isSubmitting = isPending || submissionState === "fallback";
   const statusMessage =
     submissionState === "success"
       ? contact.successMessage
+      : submissionState === "fallback"
+        ? contact.fallbackMessage
       : submissionState === "error"
         ? contact.errorMessage
         : "";
@@ -66,7 +70,8 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
         const responseText = await response.text();
 
         if (isAjaxProtectionResponse(response, responseText)) {
-          form.submit();
+          setSubmissionState("fallback");
+          window.setTimeout(() => form.submit(), 100);
           return;
         }
 
@@ -185,8 +190,8 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
           rows={4}
         />
       </label>
-      <Button className="mt-2 w-full" disabled={isPending} type="submit">
-        {isPending ? contact.pendingLabel : contact.submitLabel}
+      <Button className="mt-2 w-full" disabled={isSubmitting} type="submit">
+        {isSubmitting ? contact.pendingLabel : contact.submitLabel}
       </Button>
       <div aria-live="polite" className="min-h-6" role="status">
         {statusMessage ? (

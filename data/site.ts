@@ -233,6 +233,8 @@ export const siteData = {
     pendingLabel: "Sending...",
     successMessage:
       "Message sent. I'll review the context and reply with the next clear step.",
+    fallbackMessage:
+      "Opening Formspree's verification step so your message can be protected from spam.",
     errorMessage:
       "Something went wrong while sending. Please try again, or use the email link in the footer if the issue continues.",
     privacyNote:
