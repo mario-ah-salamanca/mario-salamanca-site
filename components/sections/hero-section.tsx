@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { siteData } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icons";
@@ -59,6 +60,14 @@ export function HeroSection() {
             <span className="hidden md:inline">{hero.secondaryCta}</span>
           </Button>
         </div>
+
+        <Link
+          className="mt-5 inline-flex items-center gap-2 rounded-[4px] text-sm font-medium text-[var(--color-outline-strong)] transition hover:text-[var(--color-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+          href={hero.resumeHref}
+        >
+          {hero.resumeCta}
+          <Icon name="arrow" size={16} />
+        </Link>
 
         <div className="mt-20 hidden flex-wrap items-center justify-center gap-2 text-sm uppercase tracking-[0.08em] text-[var(--color-outline-strong)] md:flex">
           {hero.stack.map((item, index) => (
