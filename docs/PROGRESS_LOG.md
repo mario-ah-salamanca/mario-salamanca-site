@@ -4,6 +4,49 @@
 
 ### Completed
 
+- Resolved Issue 001 by making the Formspree AJAX/reCAPTCHA policy explicit.
+- Kept hosted Formspree spam protection as the default fallback when AJAX submissions are rejected.
+- Added a contact-form verification handoff state before the native Formspree POST fallback.
+- Fixed the reviewed fallback edge case so native POST still includes enabled form controls.
+- Preserved in-page success behavior for Formspree configurations that accept AJAX.
+- Updated Playwright coverage to verify the fallback handoff message and submitted fallback request body before the hosted Formspree page is reached.
+- Documented the selected policy and the no-client-secrets constraint in README, decisions, and the issue file.
+
+### Files Changed
+
+- `components/sections/contact-form.tsx`
+- `data/site.ts`
+- `tests/contact-form.spec.ts`
+- `README.md`
+- `docs/issues/001-formspree-ajax-recaptcha.md`
+- `docs/DECISIONS.md`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+The contact flow now treats Formspree's hosted protection as an intentional trust and spam-prevention path instead of a surprising failure mode, while still keeping the smoother in-page success state available when Formspree allows AJAX.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed after localhost escalation: `npm run test:e2e -- --reporter=line`
+- Passed: `git diff --check`
+- Passed with only expected public endpoint/config and documentation references: `rg "xlgknwgg|NEXT_PUBLIC_FORMSPREE_ENDPOINT|formspree|reCAPTCHA|g-recaptcha|secret" out components tests README.md .env.example docs`
+
+### Known Issues
+
+- The live production path still depends on the actual Formspree dashboard configuration for `NEXT_PUBLIC_FORMSPREE_ENDPOINT`.
+- Protected submissions can leave the site for Formspree's hosted verification page.
+
+### Next Recommended Task
+
+- Add an Open Graph image for stronger job-application and social sharing previews.
+
+## 2026-06-18
+
+### Completed
+
 - Initialized Playwright for the project with `npm init playwright@latest`.
 - Added `@playwright/test`, `playwright.config.ts`, and an `npm run test:e2e` script.
 - Configured Playwright to run Chromium tests against a dedicated Next dev server on `localhost:3100`.

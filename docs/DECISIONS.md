@@ -1,5 +1,48 @@
 # Decision Log
 
+### 2026-06-18 — Keep Formspree Hosted Protection as the Default Fallback
+
+**Decision:**
+Keep the contact form's native Formspree POST fallback as the intentional production path when Formspree rejects AJAX submissions because reCAPTCHA or hosted verification is required. Preserve in-page AJAX success for Formspree configurations that allow it, and show a short verification handoff message before leaving the site.
+
+**Files Changed:**
+- `components/sections/contact-form.tsx`
+- `data/site.ts`
+- `tests/contact-form.spec.ts`
+- `README.md`
+- `docs/issues/001-formspree-ajax-recaptcha.md`
+- `docs/PROGRESS_LOG.md`
+- `docs/DECISIONS.md`
+
+**Context:**
+Issue 001 needed a clear Formspree AJAX/reCAPTCHA policy. The previous implementation already restored submissions by falling back to Formspree's hosted flow, but the fallback read like an implementation detail instead of an intentional spam-protection choice.
+
+**Options Considered:**
+- Disable Formspree reCAPTCHA so AJAX always stays in-page.
+- Add custom reCAPTCHA keys and render verification inside the site.
+- Keep hosted Formspree protection and make the fallback explicit.
+
+**Reasoning:**
+Hosted Formspree protection is the safest fit for the current static GitHub Pages deployment. It avoids exposing private keys, avoids adding a reCAPTCHA script to the site, and keeps the form functional when Formspree requires verification. The tradeoff is that protected submissions can leave the site for Formspree's hosted flow.
+
+**Consequences:**
+Visitors get an in-page success state when AJAX is accepted and a clear verification handoff when Formspree blocks AJAX. A future decision can still disable hosted protection or add a custom reCAPTCHA setup if smoother in-page submission becomes more important than the extra spam/privacy tradeoffs.
+
+The fallback state does not disable form controls before native POST, because disabled controls are not included in browser form submission.
+
+**Checks Run:**
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed after localhost escalation: `npm run test:e2e -- --reporter=line`
+- Passed: `git diff --check`
+- Passed with only expected public endpoint/config and documentation references: `rg "xlgknwgg|NEXT_PUBLIC_FORMSPREE_ENDPOINT|formspree|reCAPTCHA|g-recaptcha|secret" out components tests README.md .env.example docs`
+
+**Known Issues:**
+- The live production path still depends on the actual Formspree dashboard configuration for `NEXT_PUBLIC_FORMSPREE_ENDPOINT`.
+
+**Next Recommended Task:**
+Add an Open Graph image for stronger sharing previews.
+
 ### 2026-06-18 — Serve Resume From a Static Markdown Source
 
 **Decision:**

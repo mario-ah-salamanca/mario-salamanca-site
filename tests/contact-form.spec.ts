@@ -49,6 +49,7 @@ test.describe("contact form", () => {
     page,
   }) => {
     let formspreeCalls = 0;
+    let fallbackPostBody: string | null = null;
 
     await page.route(formEndpoint, async (route) => {
       formspreeCalls += 1;
@@ -65,6 +66,8 @@ test.describe("contact form", () => {
         return;
       }
 
+      fallbackPostBody = route.request().postData();
+      await new Promise((resolve) => setTimeout(resolve, 100));
       await route.fulfill({
         status: 200,
         contentType: "text/html",
@@ -76,8 +79,17 @@ test.describe("contact form", () => {
     await fillContactForm(page);
     await page.getByRole("button", { name: "Send the messy version" }).click();
 
+    await expect(
+      page.getByText(
+        "Opening Formspree's verification step so your message can be protected from spam.",
+      ),
+    ).toBeVisible();
     await expect(page).toHaveTitle(/Formspree fallback reached/);
     await expect(page.getByText("Formspree fallback reached")).toBeVisible();
     expect(formspreeCalls).toBe(2);
+    expect(fallbackPostBody).toContain("name=Codex+QA");
+    expect(fallbackPostBody).toContain("email=codex-qa%40example.com");
+    expect(fallbackPostBody).toContain("projectType=Other");
+    expect(fallbackPostBody).toContain("message=Testing+the+contact+form+submission+path.");
   });
 });

@@ -65,6 +65,17 @@ For GitHub Pages, add this value as a secret in the `github-pages` environment.
 The deploy workflow reads it during the build job so the exported static forms
 submit to Formspree instead of posting back to the GitHub Pages HTML route.
 
+The contact form intentionally supports two Formspree paths:
+
+- If Formspree accepts AJAX submissions, the visitor stays on the site and sees
+  the in-page success state.
+- If Formspree blocks AJAX because hosted spam protection is required, the form
+  opens Formspree's verification flow through a native POST fallback.
+
+Keep Formspree reCAPTCHA or hosted verification enabled unless a future decision
+accepts the spam and privacy tradeoffs of disabling it. Do not add private
+Formspree or reCAPTCHA secrets to client-side environment variables.
+
 ## Future Roadmap
 
 - Supabase leads table
