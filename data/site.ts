@@ -64,7 +64,7 @@ export const siteData = {
     title: "Software engineer building",
     emphasis: "reliable tools, workflows, and digital systems.",
     positioning: "Software Engineer. Systems Builder. Creative Founder.",
-    availability: "Open to engineering roles and select projects",
+    availability: "Aerospace · validation · automation",
     body:
       "I build practical software systems for engineering teams, founders, and people turning complex ideas into usable tools - informed by aerospace, industrial, and full-stack experience.",
     primaryCta: "View resume",

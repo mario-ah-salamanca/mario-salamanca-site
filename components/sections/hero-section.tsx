@@ -9,7 +9,7 @@ export function HeroSection() {
   const { hero } = siteData;
 
   return (
-    <section className="relative flex min-h-[680px] items-start overflow-hidden border-b border-[var(--color-outline)]/70 bg-[radial-gradient(circle_at_50%_18%,rgba(91,140,255,0.22),transparent_34%),linear-gradient(180deg,#07101f_0%,#060a12_72%)] px-4 pb-16 pt-32 md:min-h-screen md:items-center md:bg-[var(--color-void)] md:px-16 md:pb-20 md:pt-40">
+    <section className="relative flex min-h-[680px] items-start overflow-hidden border-b border-[var(--color-outline)]/70 bg-[radial-gradient(circle_at_50%_18%,rgba(91,140,255,0.22),transparent_34%),linear-gradient(180deg,#07101f_0%,#060a12_72%)] px-4 pb-12 pt-24 md:min-h-screen md:items-center md:bg-[var(--color-void)] md:px-16 md:pb-20 md:pt-40">
       <div className="absolute inset-0 z-0 hidden md:block">
         <Aurora colorStops={heroAuroraColors} amplitude={0.7} blend={0.55} />
       </div>
@@ -56,7 +56,10 @@ export function HeroSection() {
           </Button>
         </div>
 
-        <ul className="mt-9 flex max-w-4xl flex-wrap justify-center gap-2 text-left" aria-label="Engineering experience">
+        <ul
+          aria-label="Engineering experience"
+          className="mt-9 hidden max-w-4xl flex-wrap justify-center gap-2 text-left md:flex"
+        >
           {hero.proofChips.map((item) => (
             <li
               className="rounded-[999px] border border-[var(--color-outline)]/70 bg-[var(--color-surface)]/60 px-3 py-2 text-xs font-medium leading-5 text-[var(--color-primary)] md:text-sm"
