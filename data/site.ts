@@ -262,8 +262,8 @@ export const siteData = {
     },
   ],
   contact: {
-    title: "Have a messy idea?",
-    body: "Send me the rough version - the notes, screenshots, half-clear concept, unfinished plan, or problem you cannot structure yet. I'll help you find the next clear step.",
+    title: "Start the right conversation.",
+    body: "Whether you are hiring, planning a focused project, exploring a collaboration, or sending a general message, share only the context that helps me respond well.",
     scheduling: {
       title: "Prefer to talk it through?",
       body: "For project discovery, recruiter conversations, or collaboration calls, use the scheduler once a public booking link is configured.",
@@ -271,10 +271,10 @@ export const siteData = {
       unavailable:
         "Scheduling opens soon. For now, send the context here and I will reply with the next clear step.",
     },
-    submitLabel: "Send the messy version",
+    submitLabel: "Send inquiry",
     pendingLabel: "Sending...",
     successMessage:
-      "Message sent. I'll review the context and reply with the next clear step.",
+      "Inquiry sent. I'll review the context and reply with the next clear step.",
     fallbackMessage:
       "Opening Formspree's verification step so your message can be protected from spam.",
     errorMessage:
