@@ -25,7 +25,7 @@ export function SiteShell({ children }: SiteShellProps) {
         >
           <Link
             className="inline-flex shrink-0 items-center rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
-            href="#"
+            href="/"
           >
             <Image
               alt={siteData.logo.alt}
@@ -38,13 +38,9 @@ export function SiteShell({ children }: SiteShellProps) {
           </Link>
 
           <div className="hidden items-center gap-6 text-sm font-medium lg:flex">
-            {siteData.nav.map((item, index) => (
+            {siteData.nav.map((item) => (
               <Link
-                className={
-                  index === 0
-                    ? "border-b-2 border-[var(--color-primary)] pb-1 text-[var(--color-primary)]"
-                    : "text-[var(--color-muted)] transition hover:text-[var(--color-primary)]"
-                }
+                className="text-[var(--color-muted)] transition hover:text-[var(--color-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
                 href={item.href}
                 key={item.label}
               >
@@ -55,7 +51,7 @@ export function SiteShell({ children }: SiteShellProps) {
 
           <Link
             className="inline-flex rounded-[4px] bg-[var(--color-primary-strong)] px-3 py-3 text-xs font-medium uppercase leading-none tracking-[0.08em] text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] lg:px-4 lg:text-sm lg:normal-case lg:tracking-normal"
-            href="#contact"
+            href="/#contact"
           >
             Start a project
           </Link>
