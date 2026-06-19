@@ -4,6 +4,51 @@
 
 ### Completed
 
+- Added a configurable scheduling CTA to the contact section through `NEXT_PUBLIC_SCHEDULING_URL`.
+- Kept the scheduling action secondary to the existing Formspree contact form.
+- Added fallback copy for the state where no public scheduler URL is configured.
+- Wired `NEXT_PUBLIC_SCHEDULING_URL` into the GitHub Pages build and added a deployment-time presence check.
+- Documented the external scheduler-link decision for static GitHub Pages compatibility.
+- Added e2e coverage for the configured scheduling entry point.
+- Added the scheduling task to the lead-generation roadmap.
+
+### Files Changed
+
+- `components/sections/contact-section.tsx`
+- `data/site.ts`
+- `.env.example`
+- `.github/workflows/deploy.yml`
+- `playwright.config.ts`
+- `tests/contact-form.spec.ts`
+- `docs/ROADMAP.md`
+- `docs/issues/002-google-calendar-call-scheduling.md`
+- `docs/DECISIONS.md`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+Qualified visitors now have a clear path toward scheduling a call once a Google Calendar-compatible public booking link is configured, without adding a backend, exposing calendar secrets, or embedding heavier third-party scheduling scripts. Production deployments now fail clearly if the public scheduler URL is missing.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed: `npm run test:e2e -- --reporter=line`
+- Passed: `git diff --check`
+- Passed: `rg "calendar|schedule|Google|Appointment|Calendly|Cal.com|NEXT_PUBLIC_SCHEDULING_URL" app components data docs tests .env.example playwright.config.ts .github/workflows/deploy.yml`
+
+### Known Issues
+
+- Production call booking still depends on adding a real public booking URL to the GitHub Pages `NEXT_PUBLIC_SCHEDULING_URL` environment variable.
+
+### Next Recommended Task
+
+- Configure the real public scheduler URL, then add the Open Graph image for stronger sharing previews.
+
+## 2026-06-18
+
+### Completed
+
 - Resolved Issue 001 by making the Formspree AJAX/reCAPTCHA policy explicit.
 - Kept hosted Formspree spam protection as the default fallback when AJAX submissions are rejected.
 - Added a contact-form verification handoff state before the native Formspree POST fallback.

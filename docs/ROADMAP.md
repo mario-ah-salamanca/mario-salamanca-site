@@ -37,6 +37,7 @@
 
 ## Phase 5 — Lead Generation
 
+- Add Google Calendar-connected scheduling entry point
 - Create real downloadable resource
 - Add email capture
 - Add analytics

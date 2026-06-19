@@ -22,6 +22,22 @@ async function openContactForm(page: Page) {
 }
 
 test.describe("contact form", () => {
+  test("shows the configured scheduling call entry point", async ({ page }) => {
+    await openContactForm(page);
+
+    const schedulingLink = page
+      .locator("#contact")
+      .getByRole("link", { name: "Schedule a call" });
+
+    await expect(page.getByText("Prefer to talk it through?")).toBeVisible();
+    await expect(schedulingLink).toBeVisible();
+    await expect(schedulingLink).toHaveAttribute(
+      "href",
+      "https://calendar.google.com/calendar/appointments/schedules/test-schedule",
+    );
+    await expect(schedulingLink).toHaveAttribute("target", "_blank");
+  });
+
   test("shows the in-page success state when Formspree accepts AJAX", async ({
     page,
   }) => {

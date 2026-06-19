@@ -1,5 +1,46 @@
 # Decision Log
 
+### 2026-06-18 — Use a Public Scheduler Link for Call Booking
+
+**Decision:**
+Add call scheduling through a public `NEXT_PUBLIC_SCHEDULING_URL` that can point to a Google Calendar-compatible booking flow, such as Google Appointment Schedule, Cal.com, or Calendly. Keep the first site implementation as a secondary contact-area CTA instead of an embedded widget or custom Google Calendar API integration.
+
+**Files Changed:**
+- `components/sections/contact-section.tsx`
+- `data/site.ts`
+- `.env.example`
+- `.github/workflows/deploy.yml`
+- `playwright.config.ts`
+- `tests/contact-form.spec.ts`
+- `docs/ROADMAP.md`
+- `docs/issues/002-google-calendar-call-scheduling.md`
+- `docs/PROGRESS_LOG.md`
+- `docs/DECISIONS.md`
+
+**Context:**
+Issue 002 asks for a Google Calendar-connected call scheduling flow while the site still deploys as a static GitHub Pages export. The repo does not contain a real public booking URL yet, so the implementation must not invent one or expose private calendar details.
+
+**Options Considered:**
+- Add an external scheduler link connected to Google Calendar.
+- Embed a third-party scheduler widget in the contact section.
+- Build a custom Google Calendar API integration.
+
+**Reasoning:**
+A public scheduler link is the safest fit for the current deployment model. It can connect to Google Calendar outside the site, keeps OAuth credentials and private calendar IDs out of client code, avoids third-party embed weight, and gives the contact section a clear path for qualified calls once a real booking URL is configured. The GitHub Pages build verifies that `NEXT_PUBLIC_SCHEDULING_URL` is present so production does not silently ship without the scheduling entry point.
+
+**Consequences:**
+The scheduling CTA renders only when `NEXT_PUBLIC_SCHEDULING_URL` is configured. Local builds can still show fallback copy when the value is missing, but production deploys now require the variable. A future backend-backed site could revisit direct calendar integration if deeper lead capture or availability logic becomes necessary.
+
+**Checks Run:**
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed: `npm run test:e2e -- --reporter=line`
+- Passed: `git diff --check`
+- Passed: `rg "calendar|schedule|Google|Appointment|Calendly|Cal.com|NEXT_PUBLIC_SCHEDULING_URL" app components data docs tests .env.example playwright.config.ts .github/workflows/deploy.yml`
+
+**Known Issues:**
+- A real public scheduler URL still needs to be configured as the GitHub Pages `NEXT_PUBLIC_SCHEDULING_URL` environment variable before the next production deployment.
+
 ### 2026-06-18 — Keep Formspree Hosted Protection as the Default Fallback
 
 **Decision:**

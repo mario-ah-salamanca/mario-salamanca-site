@@ -229,6 +229,13 @@ export const siteData = {
   contact: {
     title: "Have a messy idea?",
     body: "Send me the rough version - the notes, screenshots, half-clear concept, unfinished plan, or problem you cannot structure yet. I'll help you find the next clear step.",
+    scheduling: {
+      title: "Prefer to talk it through?",
+      body: "For project discovery, recruiter conversations, or collaboration calls, use the scheduler once a public booking link is configured.",
+      cta: "Schedule a call",
+      unavailable:
+        "Scheduling opens soon. For now, send the context here and I will reply with the next clear step.",
+    },
     submitLabel: "Send the messy version",
     pendingLabel: "Sending...",
     successMessage:

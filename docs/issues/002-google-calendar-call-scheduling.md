@@ -4,6 +4,12 @@
 
 Add a Google Calendar-connected call scheduling flow
 
+## Status
+
+Implemented V1 site support through a configurable public scheduler link.
+
+The contact section now renders a secondary scheduling CTA when `NEXT_PUBLIC_SCHEDULING_URL` is configured. The URL should point to a Google Calendar-compatible public booking flow, such as Google Appointment Schedule, Cal.com, or Calendly. The GitHub Pages workflow now requires this variable for production builds so the deployed site does not silently lose the scheduling entry point.
+
 ## Goal
 
 Add a clear, trustworthy way for qualified visitors to request or schedule a call, with calendar availability connected to Google Calendar and enough context captured to prepare for the conversation.
@@ -85,3 +91,10 @@ rg "calendar|schedule|Google|Appointment|Calendly|Cal.com" app components data d
 - Update `docs/ROADMAP.md` with scheduling under lead generation or service clarity.
 - Update `docs/DECISIONS.md` with the selected calendar integration approach.
 - Update `docs/PROGRESS_LOG.md` after implementation and QA.
+
+## Implementation Notes
+
+- Selected approach: external public scheduler link.
+- Rejected for V1: embedded scheduler widget and custom Google Calendar API integration.
+- Reason: the site remains a static GitHub Pages export, so OAuth credentials, private calendar IDs, and server-side availability handling do not belong in the client.
+- Remaining external setup: configure the real `NEXT_PUBLIC_SCHEDULING_URL` as a GitHub Pages environment variable before the next production deployment.

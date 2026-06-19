@@ -62,6 +62,10 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: "npm run dev -- -p 3100",
+    env: {
+      NEXT_PUBLIC_SCHEDULING_URL:
+        "https://calendar.app.google/gRRfovW9wqWXXQJE9",
+    },
     stdout: "pipe",
     stderr: "pipe",
     url: "http://localhost:3100",

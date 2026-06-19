@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_FORMSPREE_ENDPOINT: ${{ secrets.NEXT_PUBLIC_FORMSPREE_ENDPOINT }}
+      NEXT_PUBLIC_SCHEDULING_URL: ${{ vars.NEXT_PUBLIC_SCHEDULING_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,6 +39,9 @@ jobs:
 
       - name: Verify form endpoint
         run: test -n "$NEXT_PUBLIC_FORMSPREE_ENDPOINT"
+
+      - name: Verify scheduling URL
+        run: test -n "$NEXT_PUBLIC_SCHEDULING_URL"
 
       - name: Build static site
         run: npm run build
