@@ -61,8 +61,8 @@ export const siteData = {
     ] as FooterTrustLink[],
   },
   hero: {
-    title: "Software engineer building",
-    emphasis: "reliable tools, workflows, and digital systems.",
+    title: "Software Engineer",
+    emphasis: "building reliable tools, workflows, and digital systems.",
     positioning: "Software Engineer. Systems Builder. Creative Founder.",
     availability: "Aerospace · validation · automation",
     body:
