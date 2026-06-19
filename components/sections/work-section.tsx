@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { siteData } from "@/data/site";
-import { Icon } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 
@@ -10,22 +8,10 @@ export function WorkSection() {
       aria-labelledby="work"
       className="mx-auto w-full max-w-[1440px] px-4 pb-16 md:px-16 md:pb-24"
     >
-      <SectionHeading
-        action={
-          <Link
-            className="inline-flex items-center gap-1 text-xs font-medium uppercase leading-none tracking-[0.08em] text-[var(--color-primary)] transition hover:text-[var(--color-secondary)]"
-            href="#work"
-          >
-            View selected work
-            <Icon name="external" size={16} />
-          </Link>
-        }
-        id="work"
-        title="Selected Builds"
-      />
+      <SectionHeading id="work" title="Selected Engineering & Product Work" />
       <p className="mb-8 max-w-2xl text-sm leading-6 text-[var(--color-outline-strong)]">
-        Some professional work is summarized at a high level to respect
-        confidentiality.
+        Selected examples of systems, tooling, and product work. Professional
+        work is summarized at a high level to respect confidentiality.
       </p>
 
       <div className="grid gap-6 lg:grid-cols-2">

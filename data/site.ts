@@ -94,6 +94,20 @@ export const siteData = {
       href: "#services",
     },
   ],
+  workWithMe: [
+    {
+      title: "Engineering Roles",
+      body: "Open to software engineering roles where reliable systems, practical tooling, validation, automation, and clear communication matter.",
+      cta: "View Engineering Profile",
+      href: "/resume",
+    },
+    {
+      title: "Freelance Projects",
+      body: "Available for select projects with founders and small teams who need a clear website, prototype, workflow, or technical starting point.",
+      cta: "Start a Project",
+      href: "#contact",
+    },
+  ],
   services: [
     {
       title: "Website Clarity Sprint",

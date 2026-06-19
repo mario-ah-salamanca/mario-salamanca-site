@@ -9,11 +9,34 @@ export function ServicesSection() {
       aria-labelledby="services"
       className="mx-auto w-full max-w-[1440px] px-4 py-16 md:px-16 md:py-24"
     >
-      <SectionHeading id="services" title="Ways to work with me" />
+      <SectionHeading id="services" title="Work With Me" />
       <p className="mb-8 max-w-2xl text-base leading-7 text-[var(--color-muted)] md:text-lg">
-        Focused offers for people who need clarity, structure, and execution -
-        not more noise.
+        Engineering roles are my primary focus. I am also available for select
+        freelance projects that need clarity, structure, and practical execution.
       </p>
+
+      <div className="mb-10 grid gap-4 lg:grid-cols-2 lg:gap-6">
+        {siteData.workWithMe.map((path) => (
+          <article
+            className="rounded-[8px] border border-[var(--color-outline)]/60 bg-[var(--color-surface-low)] p-6 md:p-8"
+            key={path.title}
+          >
+            <h3 className="font-serif text-2xl font-medium leading-tight text-[var(--color-text)]">
+              {path.title}
+            </h3>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)]">
+              {path.body}
+            </p>
+            <Button className="mt-6 w-full md:w-fit" href={path.href} variant="secondary">
+              {path.cta}
+            </Button>
+          </article>
+        ))}
+      </div>
+
+      <h3 className="mb-6 font-serif text-2xl font-medium leading-tight text-[var(--color-text)] md:text-3xl">
+        Select freelance project offers
+      </h3>
       <div className="grid gap-4 lg:grid-cols-3 lg:gap-6">
         {siteData.services.map((service) => (
           <article
