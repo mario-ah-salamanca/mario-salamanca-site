@@ -80,6 +80,20 @@ export const siteData = {
       "Full-stack product thinking",
     ],
   },
+  audiencePaths: [
+    {
+      title: "For Hiring Teams",
+      body: "I am open to software engineering roles involving tooling, automation, validation, internal tools, data workflows, backend systems, and product-facing applications.",
+      cta: "View Engineering Profile",
+      href: "/resume",
+    },
+    {
+      title: "For Founders & Small Teams",
+      body: "I help turn messy ideas and workflows into clear websites, prototypes, internal tools, documentation systems, and AI-ready ways of working.",
+      cta: "Explore Services",
+      href: "#services",
+    },
+  ],
   services: [
     {
       title: "Website Clarity Sprint",

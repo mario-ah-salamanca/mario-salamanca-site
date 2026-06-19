@@ -1,3 +1,4 @@
+import { AudiencePathsSection } from "@/components/sections/audience-paths-section";
 import { BuildLogPreviewSection } from "@/components/sections/build-log-preview-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { CredibilitySection } from "@/components/sections/credibility-section";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <SiteShell>
       <HeroSection />
+      <AudiencePathsSection />
       <CredibilitySection />
       <ServicesSection />
       <WorkSection />
