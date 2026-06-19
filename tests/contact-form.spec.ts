@@ -2,14 +2,19 @@ import { expect, type Page, test } from "@playwright/test";
 
 const formEndpoint = "https://formspree.io/f/xlgknwgg";
 
-async function fillContactForm(page: Page) {
+async function fillContactForm(
+  page: Page,
+  inquiry: "Job opportunity" | "Freelance project" | "Collaboration" | "General message",
+) {
   const contact = page.locator("#contact");
 
   await contact.getByLabel("Name").fill("Codex QA");
   await contact.getByLabel("Email").fill("codex-qa@example.com");
-  await contact.getByLabel("Project type").selectOption({ label: "Other" });
   await contact
-    .getByLabel("Message")
+    .getByLabel("What are you reaching out about?")
+    .selectOption({ label: inquiry });
+  await contact
+    .getByLabel("Message", { exact: true })
     .fill("Testing the contact form submission path.");
 }
 
@@ -50,15 +55,47 @@ test.describe("contact form", () => {
     });
 
     await openContactForm(page);
-    await fillContactForm(page);
-    await page.getByRole("button", { name: "Send the messy version" }).click();
+    await fillContactForm(page, "General message");
+    await page.getByRole("button", { name: "Send inquiry" }).click();
 
     await expect(
       page.getByText(
-        "Message sent. I'll review the context and reply with the next clear step.",
+        "Inquiry sent. I'll review the context and reply with the next clear step.",
       ),
     ).toBeVisible();
     await expect(page.locator("#contact").getByLabel("Name")).toHaveValue("");
+  });
+
+  test("reveals only the selected job fields", async ({ page }) => {
+    await openContactForm(page);
+
+    const contact = page.locator("#contact");
+    await contact
+      .getByLabel("What are you reaching out about?")
+      .selectOption({ label: "Job opportunity" });
+
+    await expect(contact.getByRole("group", { name: "Role details (optional)" })).toBeVisible();
+    await expect(contact.getByLabel("Company")).toBeVisible();
+    await expect(contact.getByLabel("Role title")).toBeVisible();
+    await expect(contact.getByLabel("Job link")).toBeVisible();
+    await expect(contact.getByLabel("Project type")).toHaveCount(0);
+  });
+
+  test("reveals only the selected freelance project fields", async ({ page }) => {
+    await openContactForm(page);
+
+    const contact = page.locator("#contact");
+    await contact
+      .getByLabel("What are you reaching out about?")
+      .selectOption({ label: "Freelance project" });
+
+    await expect(
+      contact.getByRole("group", { name: "Project details (optional)" }),
+    ).toBeVisible();
+    await expect(contact.getByLabel("Project type")).toBeVisible();
+    await expect(contact.getByLabel("Budget range")).toBeVisible();
+    await expect(contact.getByLabel("Main goal")).toBeVisible();
+    await expect(contact.getByLabel("Company")).toHaveCount(0);
   });
 
   test("falls back to native Formspree POST when AJAX is blocked", async ({
@@ -92,8 +129,13 @@ test.describe("contact form", () => {
     });
 
     await openContactForm(page);
-    await fillContactForm(page);
-    await page.getByRole("button", { name: "Send the messy version" }).click();
+    await fillContactForm(page, "Job opportunity");
+    await page.locator("#contact").getByLabel("Company").fill("Example GmbH");
+    await page
+      .locator("#contact")
+      .getByLabel("Role title")
+      .fill("Software Engineer");
+    await page.getByRole("button", { name: "Send inquiry" }).click();
 
     await expect(
       page.getByText(
@@ -105,7 +147,10 @@ test.describe("contact form", () => {
     expect(formspreeCalls).toBe(2);
     expect(fallbackPostBody).toContain("name=Codex+QA");
     expect(fallbackPostBody).toContain("email=codex-qa%40example.com");
-    expect(fallbackPostBody).toContain("projectType=Other");
+    expect(fallbackPostBody).toContain("inquiryType=job");
+    expect(fallbackPostBody).toContain("jobCompany=Example+GmbH");
+    expect(fallbackPostBody).toContain("jobRoleTitle=Software+Engineer");
+    expect(fallbackPostBody).not.toContain("projectType=");
     expect(fallbackPostBody).toContain("message=Testing+the+contact+form+submission+path.");
   });
 });

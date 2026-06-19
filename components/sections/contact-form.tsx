@@ -13,6 +13,7 @@ type ContactFormCopy = {
 };
 
 type SubmissionState = "idle" | "pending" | "success" | "fallback" | "error";
+type InquiryType = "" | "job" | "project" | "collaboration" | "general";
 
 type ContactFormProps = {
   endpoint?: string;
@@ -30,6 +31,7 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle");
+  const [inquiryType, setInquiryType] = useState<InquiryType>("");
 
   const isPending = submissionState === "pending";
   const isSubmitting = isPending || submissionState === "fallback";
@@ -79,6 +81,7 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
       }
 
       formRef.current?.reset();
+      setInquiryType("");
       setSubmissionState("success");
     } catch {
       setSubmissionState("error");
@@ -122,60 +125,192 @@ export function ContactForm({ endpoint, contact }: ContactFormProps) {
           type="email"
         />
       </label>
-      <label className="grid gap-2" htmlFor="project-type">
+      <label className="grid gap-2" htmlFor="inquiry-type">
         <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
-          Project type
+          What are you reaching out about?
         </span>
         <select
           className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition focus:border-[var(--color-primary)]"
           disabled={isPending}
-          id="project-type"
-          name="projectType"
+          id="inquiry-type"
+          name="inquiryType"
+          onChange={(event) => {
+            setInquiryType(event.target.value as InquiryType);
+            setSubmissionState("idle");
+          }}
           required
+          value={inquiryType}
         >
           <option value="">Select one</option>
-          <option>I need a website</option>
-          <option>I need an AI/workflow system</option>
-          <option>I need a prototype</option>
-          <option>I want to collaborate</option>
-          <option>Other</option>
+          <option value="job">Job opportunity</option>
+          <option value="project">Freelance project</option>
+          <option value="collaboration">Collaboration</option>
+          <option value="general">General message</option>
         </select>
       </label>
-      <div className="grid gap-5 md:grid-cols-2">
-        <label className="grid gap-2" htmlFor="budget-range">
-          <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
-            Budget range
-          </span>
-          <select
-            className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition focus:border-[var(--color-primary)]"
-            disabled={isPending}
-            id="budget-range"
-            name="budgetRange"
-          >
-            <option>Not sure yet</option>
-            <option>Under €1,000</option>
-            <option>€1,000-€3,000</option>
-            <option>€3,000-€5,000</option>
-            <option>€5,000+</option>
-          </select>
-        </label>
-        <label className="grid gap-2" htmlFor="timeline">
-          <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
-            Timeline
-          </span>
-          <select
-            className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition focus:border-[var(--color-primary)]"
-            disabled={isPending}
-            id="timeline"
-            name="timeline"
-          >
-            <option>As soon as possible</option>
-            <option>This month</option>
-            <option>Next 1-3 months</option>
-            <option>Flexible</option>
-          </select>
-        </label>
-      </div>
+      {inquiryType === "job" ? (
+        <fieldset className="grid gap-5 border-y border-[var(--color-outline)]/50 py-5">
+          <legend className="px-0 text-sm font-medium text-[var(--color-text)]">
+            Role details (optional)
+          </legend>
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="grid gap-2" htmlFor="job-company">
+              <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+                Company
+              </span>
+              <input
+                className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-outline)]/80 focus:border-[var(--color-primary)]"
+                disabled={isPending}
+                id="job-company"
+                name="jobCompany"
+                placeholder="Company name"
+                type="text"
+              />
+            </label>
+            <label className="grid gap-2" htmlFor="job-role-title">
+              <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+                Role title
+              </span>
+              <input
+                className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-outline)]/80 focus:border-[var(--color-primary)]"
+                disabled={isPending}
+                id="job-role-title"
+                name="jobRoleTitle"
+                placeholder="Software Engineer"
+                type="text"
+              />
+            </label>
+          </div>
+          <label className="grid gap-2" htmlFor="job-link">
+            <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+              Job link
+            </span>
+            <input
+              className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-outline)]/80 focus:border-[var(--color-primary)]"
+              disabled={isPending}
+              id="job-link"
+              name="jobLink"
+              placeholder="https://..."
+              type="url"
+            />
+          </label>
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="grid gap-2" htmlFor="job-location">
+              <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+                Location or remote expectation
+              </span>
+              <input
+                className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-outline)]/80 focus:border-[var(--color-primary)]"
+                disabled={isPending}
+                id="job-location"
+                name="jobLocation"
+                placeholder="Berlin, hybrid, remote..."
+                type="text"
+              />
+            </label>
+            <label className="grid gap-2" htmlFor="job-contact-context">
+              <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+                Contact context
+              </span>
+              <input
+                className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-outline)]/80 focus:border-[var(--color-primary)]"
+                disabled={isPending}
+                id="job-contact-context"
+                name="jobContactContext"
+                placeholder="How you found my profile"
+                type="text"
+              />
+            </label>
+          </div>
+        </fieldset>
+      ) : null}
+      {inquiryType === "project" ? (
+        <fieldset className="grid gap-5 border-y border-[var(--color-outline)]/50 py-5">
+          <legend className="px-0 text-sm font-medium text-[var(--color-text)]">
+            Project details (optional)
+          </legend>
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="grid gap-2" htmlFor="project-type">
+              <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+                Project type
+              </span>
+              <select
+                className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition focus:border-[var(--color-primary)]"
+                disabled={isPending}
+                id="project-type"
+                name="projectType"
+              >
+                <option value="">Select one</option>
+                <option>Website</option>
+                <option>AI or workflow system</option>
+                <option>Technical prototype</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label className="grid gap-2" htmlFor="budget-range">
+              <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+                Budget range
+              </span>
+              <select
+                className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition focus:border-[var(--color-primary)]"
+                disabled={isPending}
+                id="budget-range"
+                name="budgetRange"
+              >
+                <option>Not sure yet</option>
+                <option>Under €1,000</option>
+                <option>€1,000-€3,000</option>
+                <option>€3,000-€5,000</option>
+                <option>€5,000+</option>
+              </select>
+            </label>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="grid gap-2" htmlFor="timeline">
+              <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+                Timeline
+              </span>
+              <select
+                className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition focus:border-[var(--color-primary)]"
+                disabled={isPending}
+                id="timeline"
+                name="timeline"
+              >
+                <option>As soon as possible</option>
+                <option>This month</option>
+                <option>Next 1-3 months</option>
+                <option>Flexible</option>
+              </select>
+            </label>
+            <label className="grid gap-2" htmlFor="project-link">
+              <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+                Current site or product link
+              </span>
+              <input
+                className="min-h-12 w-full border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-outline)]/80 focus:border-[var(--color-primary)]"
+                disabled={isPending}
+                id="project-link"
+                name="projectLink"
+                placeholder="https://..."
+                type="url"
+              />
+            </label>
+          </div>
+          <label className="grid gap-2" htmlFor="project-goal">
+            <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
+              Main goal
+            </span>
+            <textarea
+              className="min-h-24 w-full resize-none border-0 border-b border-[var(--color-outline)] bg-[var(--color-void)] px-3 py-3 text-base text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-outline)]/80 focus:border-[var(--color-primary)]"
+              disabled={isPending}
+              id="project-goal"
+              name="projectGoal"
+              placeholder="What needs to be clearer, faster, or easier?"
+              rows={3}
+            />
+          </label>
+        </fieldset>
+      ) : null}
       <label className="grid gap-2" htmlFor="message">
         <span className="text-xs font-medium uppercase tracking-[0.08em] text-[var(--color-primary)]/80">
           Message

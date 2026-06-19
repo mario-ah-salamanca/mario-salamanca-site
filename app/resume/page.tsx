@@ -42,7 +42,8 @@ export default async function ResumePage() {
               Mario Salamanca
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
-              Software Engineer. Systems Builder. Creative Founder.
+              Software Engineer focused on reliable tools, automation, systems
+              integration, and full-stack product work.
             </p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <a
@@ -74,6 +75,69 @@ export default async function ResumePage() {
               width={512}
             />
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[var(--color-surface-low)] px-4 py-12 md:px-16 md:py-16">
+        <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.7fr)]">
+          <div>
+            <p className="text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-secondary)]">
+              Engineering profile
+            </p>
+            <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl">
+              Systems-minded engineering for tools that need to hold up in use.
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-[var(--color-muted)]">
+              I am open to software engineering roles involving tooling,
+              automation, validation, integration, data workflows, backend
+              systems, and product-facing applications. My experience spans
+              aerospace and industrial software, from integration test benches
+              and communication layers to Python data tooling and web products.
+            </p>
+          </div>
+          <aside className="rounded-[8px] border border-[var(--color-outline)]/70 bg-[var(--color-void)] p-6">
+            <h2 className="font-serif text-2xl font-semibold text-[var(--color-text)]">
+              Professional links
+            </h2>
+            <ul className="mt-5 grid gap-3 text-sm text-[var(--color-primary)]">
+              <li>
+                <a
+                  className="underline decoration-[var(--color-primary)]/40 underline-offset-4 transition hover:text-[var(--color-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                  href="https://github.com/mario-ah-salamanca"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  className="underline decoration-[var(--color-primary)]/40 underline-offset-4 transition hover:text-[var(--color-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                  href="https://www.linkedin.com/in/mario-ah-salamanca/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  className="underline decoration-[var(--color-primary)]/40 underline-offset-4 transition hover:text-[var(--color-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                  href="mailto:mario.ah.salamanca@gmail.com"
+                >
+                  Email Mario
+                </a>
+              </li>
+              <li>
+                <Link
+                  className="underline decoration-[var(--color-primary)]/40 underline-offset-4 transition hover:text-[var(--color-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                  href="/#contact"
+                >
+                  Discuss a role
+                </Link>
+              </li>
+            </ul>
+          </aside>
         </div>
       </section>
 
