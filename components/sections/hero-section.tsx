@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { siteData } from "@/data/site";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icons";
@@ -27,6 +26,10 @@ export function HeroSection() {
           </span>
         </div>
 
+        <p className="mb-5 text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-secondary)] md:mb-6 md:text-sm">
+          {hero.positioning}
+        </p>
+
         <h1 className="max-w-4xl font-serif text-5xl font-semibold leading-[1.08] text-[var(--color-text)] md:text-[64px] md:leading-[1.1]">
           {hero.title}
           <br />
@@ -40,33 +43,29 @@ export function HeroSection() {
         </p>
 
         <div className="mt-9 flex w-full flex-col gap-4 sm:max-w-md sm:flex-row sm:justify-center md:mt-12">
-          <Button className="w-full sm:w-auto" href="#contact">
+          <Button className="w-full sm:w-auto" href={hero.primaryHref}>
             {hero.primaryCta}
             <Icon className="md:hidden" name="arrow" size={18} />
           </Button>
-          <Button className="w-full sm:w-auto" href="#work" variant="secondary">
+          <Button
+            className="w-full sm:w-auto"
+            href={hero.secondaryHref}
+            variant="secondary"
+          >
             {hero.secondaryCta}
           </Button>
         </div>
 
-        <Link
-          className="mt-5 inline-flex items-center gap-2 rounded-[4px] text-sm font-medium text-[var(--color-outline-strong)] transition hover:text-[var(--color-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
-          href={hero.resumeHref}
-        >
-          {hero.resumeCta}
-          <Icon name="arrow" size={16} />
-        </Link>
-
-        <div className="mt-20 hidden flex-wrap items-center justify-center gap-2 text-sm uppercase tracking-[0.08em] text-[var(--color-outline-strong)] md:flex">
-          {hero.stack.map((item, index) => (
-            <span className="contents" key={item}>
-              <span>{item}</span>
-              {index < hero.stack.length - 1 ? (
-                <span className="text-[var(--color-outline)]">•</span>
-              ) : null}
-            </span>
+        <ul className="mt-9 flex max-w-4xl flex-wrap justify-center gap-2 text-left" aria-label="Engineering experience">
+          {hero.proofChips.map((item) => (
+            <li
+              className="rounded-[999px] border border-[var(--color-outline)]/70 bg-[var(--color-surface)]/60 px-3 py-2 text-xs font-medium leading-5 text-[var(--color-primary)] md:text-sm"
+              key={item}
+            >
+              {item}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
