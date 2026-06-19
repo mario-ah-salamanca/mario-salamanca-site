@@ -4,6 +4,45 @@
 
 ### Completed
 
+- Resolved GitHub issue #32 by completing a recruiter and hiring-team path across the existing navigation, resume page, and contact flow.
+- Resolved subissue #42 with a scan-friendly engineering profile on `/resume`, clear role openness, CV actions, and public GitHub, LinkedIn, email, and job-conversation links.
+- Resolved subissue #15 with an inquiry-type choice that reveals concise, optional job or freelance-project prompts while keeping collaboration and general messages low-friction.
+- Preserved Formspree AJAX success and protected native POST fallback behavior; the fallback payload now sends only fields relevant to the selected inquiry type.
+
+### Files Changed
+
+- `app/resume/page.tsx`
+- `components/sections/contact-form.tsx`
+- `data/site.ts`
+- `tests/resume.spec.ts`
+- `tests/contact-form.spec.ts`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+Recruiters can now reach a focused public profile from primary navigation, verify relevant engineering strengths and professional links, and start a job conversation without encountering a freelance-only form. Project leads retain a focused qualification path without adding irrelevant requirements for every visitor.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed: `npm run test:e2e -- --reporter=line` (9 Chromium tests)
+- Passed: `git diff --check`
+- Passed: desktop `/resume` and mobile `/#contact` rendered QA with no application console warnings or errors.
+
+### Known Issues
+
+- The public CV remains the source of record for detailed work history and skills; it should be updated alongside future role or experience changes.
+- Production Formspree behavior still depends on the existing hosted form settings and may redirect protected submissions to Formspree's verification flow.
+
+### Next Recommended Task
+
+- Create the dedicated work and services pages before adding more homepage detail, then route the existing overview cards to those pages.
+
+## 2026-06-19
+
+### Completed
+
 - Repositioned the homepage around software-engineering roles and select project work, resolving the implementation scope of GitHub issues #37 through #41 under parent issue #31.
 - Made `View Resume` the primary hero action, retained the established `Software Engineer. Systems Builder. Creative Founder.` positioning, and added evidence-based engineering proof in the first viewport.
 - Added clear paths for hiring teams and founders/small teams, routing visitors to the existing resume or service/contact paths.
