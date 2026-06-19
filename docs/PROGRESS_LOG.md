@@ -37,7 +37,12 @@ The homepage now gives recruiters and hiring managers a direct resume path and i
 - Passed: `npm run build`
 - Passed: `npm run test:e2e -- --reporter=line`
 - Passed: desktop and mobile Chromium rendered checks for hero CTA fit, hash navigation, page identity, and runtime errors.
-- Known non-blocking rendered warning: desktop Chromium reports existing WebGL GPU `ReadPixels` performance warnings from the decorative background; no application errors were observed.
+
+### Known Issues
+
+- Draft PR [#48](https://github.com/mario-ah-salamanca/mario-salamanca-site/pull/48) is open against `main`; linked issues will close when it merges.
+- The existing homepage metadata description and social-sharing description still lead with founders and creators. Align that copy with the engineering-first homepage in a dedicated SEO metadata task.
+- Desktop Chromium reports existing WebGL GPU `ReadPixels` performance warnings from the decorative background; no application errors were observed.
 
 ### Next Recommended Task
 
