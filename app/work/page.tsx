@@ -8,6 +8,20 @@ export const metadata: Metadata = {
   title: "Selected Work | Mario Salamanca",
   description:
     "Selected engineering case studies covering validation tooling, data workflows, industrial interfaces, documentation systems, and this personal website.",
+  alternates: {
+    canonical: "/work",
+  },
+  openGraph: {
+    title: "Selected Work | Mario Salamanca",
+    description:
+      "Selected engineering case studies covering validation tooling, data workflows, industrial interfaces, documentation systems, and this personal website.",
+    url: "/work",
+  },
+  twitter: {
+    title: "Selected Work | Mario Salamanca",
+    description:
+      "Selected engineering case studies covering validation tooling, data workflows, industrial interfaces, documentation systems, and this personal website.",
+  },
 };
 
 export default function WorkPage() {

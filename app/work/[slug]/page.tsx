@@ -24,6 +24,18 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
   return {
     title: `${caseStudy.title} | Mario Salamanca`,
     description: caseStudy.summary,
+    alternates: {
+      canonical: `/work/${caseStudy.slug}`,
+    },
+    openGraph: {
+      title: `${caseStudy.title} | Mario Salamanca`,
+      description: caseStudy.summary,
+      url: `/work/${caseStudy.slug}`,
+    },
+    twitter: {
+      title: `${caseStudy.title} | Mario Salamanca`,
+      description: caseStudy.summary,
+    },
   };
 }
 
@@ -67,7 +79,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             <CaseStudySection title="Constraints">{caseStudy.constraints}</CaseStudySection>
             <CaseStudySection title="My role">{caseStudy.role}</CaseStudySection>
             <CaseStudySection title="Approach">{caseStudy.approach}</CaseStudySection>
-            <CaseStudySection title="Architecture or approach">{caseStudy.architecture}</CaseStudySection>
+            <CaseStudySection title="Architecture and workflow">{caseStudy.architecture}</CaseStudySection>
             <CaseStudyList title="Technologies used" items={caseStudy.technologies} />
             <CaseStudyList title="Implementation highlights" items={caseStudy.implementationHighlights} />
             <CaseStudySection title="Result or current status">{caseStudy.result}</CaseStudySection>
