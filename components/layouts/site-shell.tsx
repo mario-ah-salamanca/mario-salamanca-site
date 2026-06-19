@@ -54,14 +54,7 @@ export function SiteShell({ children }: SiteShellProps) {
           </div>
 
           <Link
-            className="hidden rounded-[4px] bg-[var(--color-primary-strong)] px-4 py-3 text-sm font-medium leading-none text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] lg:inline-flex"
-            href="#contact"
-          >
-            Start a project
-          </Link>
-
-          <Link
-            className="inline-flex rounded-[4px] bg-[var(--color-primary-strong)] px-3 py-3 text-xs font-medium uppercase leading-none tracking-[0.08em] text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] lg:hidden"
+            className="inline-flex rounded-[4px] bg-[var(--color-primary-strong)] px-3 py-3 text-xs font-medium uppercase leading-none tracking-[0.08em] text-[var(--color-on-primary)] transition hover:bg-[var(--color-primary)] lg:px-4 lg:text-sm lg:normal-case lg:tracking-normal"
             href="#contact"
           >
             Start a project

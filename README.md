@@ -48,6 +48,10 @@ the domain root (`/`) instead of the repository project path. Keep `basePath`
 and `assetPrefix` unset unless the site is intentionally moved back to a
 sub-path deployment.
 
+The canonical metadata domain is currently `https://mario-ah-salamanca.com/`.
+Keep Open Graph, Twitter card, sitemap, robots, and redirect decisions aligned
+with that primary domain unless a future decision changes it.
+
 Configure the custom domain in GitHub repository settings under
 Settings -> Pages -> Custom domain, then set the required DNS records with the
 domain provider. For GitHub Actions Pages deployments, a committed `CNAME` file

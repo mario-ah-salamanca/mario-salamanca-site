@@ -64,17 +64,11 @@ export const siteData = {
   hero: {
     title: "Mario Salamanca.",
     emphasis: "Software Engineer. Systems Builder. Creative Founder.",
-    mobileTitle: "Mario Salamanca.",
-    mobileEmphasis: "Systems Builder.",
     availability: "Available for new projects",
-    desktopBody:
+    body:
       "I help founders, creators, and small teams turn messy ideas into clear websites, workflows, prototypes, and digital systems - built with the discipline of dependable software engineering.",
-    mobileBody:
-      "I help turn messy ideas into clear websites, workflows, and prototypes.",
     primaryCta: "Work with me",
-    mobilePrimaryCta: "Start a project",
     secondaryCta: "View selected work",
-    mobileSecondaryCta: "View work",
     resumeCta: "View resume and download CV",
     resumeHref: "/resume",
     stack: [

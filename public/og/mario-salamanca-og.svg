@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Mario Salamanca social preview</title>
+  <desc id="desc">Software Engineer, Systems Builder, Creative Founder</desc>
+  <defs>
+    <radialGradient id="blueGlow" cx="72%" cy="24%" r="62%">
+      <stop offset="0%" stop-color="#4c67ff" stop-opacity="0.72" />
+      <stop offset="42%" stop-color="#003fbf" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#060a12" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="signalLine" x1="168" y1="472" x2="1032" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5b8cff" stop-opacity="0" />
+      <stop offset="18%" stop-color="#5b8cff" stop-opacity="0.82" />
+      <stop offset="82%" stop-color="#9fb7ff" stop-opacity="0.82" />
+      <stop offset="100%" stop-color="#5b8cff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#060a12" />
+  <rect width="1200" height="630" fill="url(#blueGlow)" />
+  <path d="M0 96C176 56 281 112 433 84C583 57 672 7 840 37C982 62 1085 42 1200 12V0H0Z" fill="#0b1630" opacity="0.75" />
+  <path d="M0 612C205 566 342 600 529 562C730 522 887 485 1200 533V630H0Z" fill="#081226" opacity="0.9" />
+  <g opacity="0.22" stroke="#5b8cff" stroke-width="1">
+    <path d="M146 110H1054" />
+    <path d="M146 160H1054" />
+    <path d="M146 210H1054" />
+    <path d="M146 260H1054" />
+    <path d="M146 310H1054" />
+    <path d="M146 360H1054" />
+    <path d="M146 410H1054" />
+    <path d="M146 460H1054" />
+  </g>
+  <rect x="96" y="76" width="1008" height="478" rx="28" fill="#09111f" opacity="0.72" stroke="#243859" />
+  <circle cx="180" cy="150" r="8" fill="#5b8cff" />
+  <text x="204" y="157" fill="#9fb7ff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">AVAILABLE FOR CLEAR DIGITAL SYSTEMS</text>
+  <text x="168" y="278" fill="#f6f8ff" font-family="Georgia, Times New Roman, serif" font-size="72" font-weight="700">Mario Salamanca</text>
+  <text x="168" y="356" fill="#5b8cff" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Software Engineer. Systems Builder.</text>
+  <text x="168" y="414" fill="#c9d5f0" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="500">Creative Founder.</text>
+  <rect x="168" y="468" width="864" height="2" fill="url(#signalLine)" />
+  <text x="168" y="524" fill="#aab8d8" font-family="Inter, Arial, sans-serif" font-size="24">Websites, workflows, prototypes, and reliable execution.</text>
+</svg>

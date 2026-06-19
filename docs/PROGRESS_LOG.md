@@ -1,5 +1,55 @@
 # Progress Log
 
+## 2026-06-19
+
+### Completed
+
+- Resolved GitHub issue #28 by removing duplicate responsive hero text from the crawlable/accessibility layer.
+- Replaced separate mobile/desktop hero title, intro, and CTA strings with one semantic hero heading, one intro paragraph, and one primary/secondary CTA pair.
+- Consolidated the duplicate header "Start a project" links into one responsive link.
+- Added canonical homepage metadata for `https://mario-ah-salamanca.com/`.
+- Added Open Graph and Twitter card metadata with a real 1200x630 social preview image.
+- Added a static social preview source SVG and generated PNG under `public/og/`.
+- Closed GitHub issue #7 because the Open Graph image asset is now present and wired into metadata.
+- Created GitHub issue #29 for the remaining anchor-navigation viewport jump around section headings.
+
+### Files Changed
+
+- `app/layout.tsx`
+- `components/sections/hero-section.tsx`
+- `components/layouts/site-shell.tsx`
+- `data/site.ts`
+- `public/og/mario-salamanca-og.svg`
+- `public/og/mario-salamanca-og.png`
+- `README.md`
+- `docs/DECISIONS.md`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+The homepage now presents a cleaner semantic surface to screen readers and crawlers before social metadata is evaluated. Shared links also have an intentional title, description, canonical URL, and preview image for recruiter, hiring-manager, founder, and collaborator traffic.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed: `rg "metadataBase|openGraph|twitter|alternates" app`
+- Passed: `rg "og:image|twitter:image|canonical|mario-salamanca-og" out/index.html`
+- Passed after stripping Next.js script payloads from `out/index.html`: duplicate checks for `Start a projectStart a project`, repeated hero name concatenation, and repeated hero intro concatenation.
+- Passed after localhost escalation: Playwright desktop and mobile CTA interaction from `/` to `#contact`.
+
+### Known Issues
+
+- `mario-ah-salamanca.com` is now the canonical metadata domain in code, but production DNS/HTTPS verification remains part of issue #8.
+- The secondary `.eu` domain still needs redirect or fallback behavior defined outside this code change.
+- Rendered QA surfaced existing WebGL GPU performance warnings on desktop.
+- A separate follow-up issue (#29) tracks anchor navigation landing too close to or past section headings with the fixed header.
+- First-viewport hero screenshot capture was not completed after the final interaction check because the follow-up screenshot run was not approved.
+
+### Next Recommended Task
+
+- Fix issue #29 by tuning hash-navigation scroll offsets for the fixed header, then complete sitemap, robots, and 404 support.
+
 ## 2026-06-18
 
 ### Completed

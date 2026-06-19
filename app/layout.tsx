@@ -2,6 +2,17 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
+const siteUrl = "https://mario-ah-salamanca.com";
+const siteTitle = "Mario Salamanca | Software Engineer & Systems Builder";
+const siteDescription =
+  "I help founders, creators, and small teams turn messy ideas into clear websites, workflows, prototypes, and digital systems.";
+const ogImage = {
+  url: "/og/mario-salamanca-og.png",
+  width: 1200,
+  height: 630,
+  alt: "Mario Salamanca - Software Engineer, Systems Builder, Creative Founder",
+};
+
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
@@ -18,9 +29,30 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: "Mario Salamanca | Software Engineer & Systems Builder",
-  description:
-    "I help founders, creators, and small teams turn messy ideas into clear websites, workflows, prototypes, and digital systems.",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+    siteName: "Mario Salamanca",
+    images: [ogImage],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: {
+      url: ogImage.url,
+      alt: ogImage.alt,
+    },
+  },
   icons: {
     icon: [
       {
