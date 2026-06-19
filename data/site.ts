@@ -23,12 +23,12 @@ export const siteData = {
     height: 821,
   },
   nav: [
-    { label: "Home", href: "#" },
+    { label: "Home", href: "/" },
     { label: "Resume", href: "/resume" },
-    { label: "Technical Strengths", href: "#credibility" },
-    { label: "Work", href: "#work" },
-    { label: "Work With Me", href: "#services" },
-    { label: "About", href: "#about" },
+    { label: "Technical Strengths", href: "/#credibility" },
+    { label: "Work", href: "/work" },
+    { label: "Work With Me", href: "/#services" },
+    { label: "About", href: "/#about" },
   ],
   footer: {
     trustStatement: "Built for clarity, reliability, and execution.",

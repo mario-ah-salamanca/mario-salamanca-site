@@ -4,6 +4,48 @@
 
 ### Completed
 
+- Resolved GitHub issue #33 by creating a dedicated, static-exported selected-work index and reusable mini case-study route.
+- Resolved issue #14 with typed case-study content, route-specific metadata, generated static work paths, homepage links to published studies, and cross-page navigation that continues to work away from the homepage.
+- Added evidence-backed case studies for aerospace test tooling (#13), industrial HMI and CAN communication (#11), ETL/data modeling (#12), an AI-ready documentation kit (#16), and this personal website system (#19).
+- Kept professional work at a safe abstraction level: no program names, client details, proprietary source data, system designs, test data, metrics, or confidential implementation details are published.
+
+### Files Changed
+
+- `app/work/page.tsx`
+- `app/work/[slug]/page.tsx`
+- `components/work/case-study-card.tsx`
+- `components/sections/work-section.tsx`
+- `components/layouts/site-shell.tsx`
+- `data/work.ts`
+- `data/site.ts`
+- `tests/work.spec.ts`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+Recruiters, hiring managers, and technical collaborators can now move from concise homepage proof to structured, inspectable case studies. The new work surface explains context, constraints, role, approach, technologies, implementation highlights, status, and follow-up thinking without making unverified outcome claims.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `npm run build` (static export generated `/work/` and all five `/work/[slug]/` routes)
+- Passed: `npm run test:e2e -- --reporter=line` (15 Chromium tests)
+- Passed: exported-route and canonical checks for the work index and every case-study route
+- Passed: desktop `/work` and 390px-wide `/work/aerospace-test-tooling` rendered QA with no clipping, horizontal overflow, framework error overlay, or broken interaction observed
+
+### Known Issues
+
+- Case-study social cards are not route-specific; the shared site preview remains in use.
+- Production custom-domain, HTTPS, Formspree, and scheduling-link configuration remain external deployment concerns.
+
+### Next Recommended Task
+
+- Create dedicated service pages and route the homepage service overview cards to them.
+
+## 2026-06-19
+
+### Completed
+
 - Resolved GitHub issue #32 by completing a recruiter and hiring-team path across the existing navigation, resume page, and contact flow.
 - Resolved subissue #42 with a scan-friendly engineering profile on `/resume`, clear role openness, CV actions, and public GitHub, LinkedIn, email, and job-conversation links.
 - Resolved subissue #15 with an inquiry-type choice that reveals concise, optional job or freelance-project prompts while keeping collaboration and general messages low-friction.

@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { siteData } from "@/data/site";
+import { getCaseStudyByTitle } from "@/data/work";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 
@@ -15,7 +17,10 @@ export function WorkSection() {
       </p>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {siteData.work.map((project) => (
+        {siteData.work.map((project) => {
+          const caseStudy = getCaseStudyByTitle(project.title);
+
+          return (
           <article
             className="overflow-hidden rounded-[8px] border border-white/[0.07] bg-[var(--color-surface-raised)]"
             key={project.title}
@@ -47,9 +52,18 @@ export function WorkSection() {
               <p className="text-base leading-7 text-[var(--color-muted)]">
                 {project.body}
               </p>
+              {caseStudy ? (
+                <Link
+                  className="inline-flex w-fit min-h-11 items-center rounded-[4px] border border-[var(--color-primary)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition hover:bg-white/[0.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                  href={`/work/${caseStudy.slug}`}
+                >
+                  Read case study
+                </Link>
+              ) : null}
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
