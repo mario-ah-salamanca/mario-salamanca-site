@@ -4,6 +4,54 @@
 
 ### Completed
 
+- Repositioned the homepage around software-engineering roles and select project work, resolving the implementation scope of GitHub issues #37 through #41 under parent issue #31.
+- Made `View Resume` the primary hero action, retained the established `Software Engineer. Systems Builder. Creative Founder.` positioning, and added evidence-based engineering proof in the first viewport.
+- Added clear paths for hiring teams and founders/small teams, routing visitors to the existing resume or service/contact paths.
+- Reframed homepage work as `Selected Engineering & Product Work` and services as `Work With Me`, with engineering roles presented before selective freelance offers.
+- Added practical technical-team proof around systems thinking, building through ambiguity, and clear communication.
+- Reordered the homepage into a concise professional overview and removed unfinished resources/build-log previews from the homepage path.
+- Resolved GitHub issue #29 in code by adding responsive hash-navigation offsets for the fixed header and covering `#work` and `#contact` on desktop and mobile with Playwright.
+- Corrected the existing scheduling test expectation to match the configured Playwright scheduler URL.
+
+### Files Changed
+
+- `app/globals.css`
+- `app/page.tsx`
+- `components/sections/audience-paths-section.tsx`
+- `components/sections/hero-section.tsx`
+- `components/sections/services-section.tsx`
+- `components/sections/technical-team-section.tsx`
+- `components/sections/work-section.tsx`
+- `data/site.ts`
+- `tests/contact-form.spec.ts`
+- `tests/homepage.spec.ts`
+- `docs/PROGRESS_LOG.md`
+
+### Why It Matters
+
+The homepage now gives recruiters and hiring managers a direct resume path and immediate engineering context, while keeping an explicit, secondary route for suitable project work. Visitors arriving through in-page navigation can now see their destination heading below the fixed header.
+
+### Checks Run
+
+- Passed: `npm run lint`
+- Passed: `npm run build`
+- Passed: `npm run test:e2e -- --reporter=line`
+- Passed: desktop and mobile Chromium rendered checks for hero CTA fit, hash navigation, page identity, and runtime errors.
+
+### Known Issues
+
+- Draft PR [#48](https://github.com/mario-ah-salamanca/mario-salamanca-site/pull/48) is open against `main`; linked issues will close when it merges.
+- The existing homepage metadata description and social-sharing description still lead with founders and creators. Align that copy with the engineering-first homepage in a dedicated SEO metadata task.
+- Desktop Chromium reports existing WebGL GPU `ReadPixels` performance warnings from the decorative background; no application errors were observed.
+
+### Next Recommended Task
+
+- Create the dedicated work and services pages before adding more homepage detail, then route the existing overview cards to those pages.
+
+## 2026-06-19
+
+### Completed
+
 - Resolved GitHub issue #28 by removing duplicate responsive hero text from the crawlable/accessibility layer.
 - Replaced separate mobile/desktop hero title, intro, and CTA strings with one semantic hero heading, one intro paragraph, and one primary/secondary CTA pair.
 - Consolidated the duplicate header "Start a project" links into one responsive link.

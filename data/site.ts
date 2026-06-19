@@ -24,11 +24,10 @@ export const siteData = {
   },
   nav: [
     { label: "Home", href: "#" },
-    { label: "Proof", href: "#credibility" },
-    { label: "Services", href: "#services" },
+    { label: "Resume", href: "/resume" },
+    { label: "Technical Strengths", href: "#credibility" },
     { label: "Work", href: "#work" },
-    { label: "Resources", href: "#resources" },
-    { label: "Build Log", href: "#build-log" },
+    { label: "Work With Me", href: "#services" },
     { label: "About", href: "#about" },
   ],
   footer: {
@@ -62,24 +61,52 @@ export const siteData = {
     ] as FooterTrustLink[],
   },
   hero: {
-    title: "Mario Salamanca.",
-    emphasis: "Software Engineer. Systems Builder. Creative Founder.",
-    availability: "Available for new projects",
+    title: "Software engineer building",
+    emphasis: "reliable tools, workflows, and digital systems.",
+    positioning: "Software Engineer. Systems Builder. Creative Founder.",
+    availability: "Aerospace · validation · automation",
     body:
-      "I help founders, creators, and small teams turn messy ideas into clear websites, workflows, prototypes, and digital systems - built with the discipline of dependable software engineering.",
-    primaryCta: "Work with me",
-    secondaryCta: "View selected work",
-    resumeCta: "View resume and download CV",
-    resumeHref: "/resume",
-    stack: [
-      "C / C++ / Python",
-      "React / Next.js",
-      "System Integration",
-      "Validation",
-      "Automation",
-      "AI Workflows",
+      "I build practical software systems for engineering teams, founders, and people turning complex ideas into usable tools - informed by aerospace, industrial, and full-stack experience.",
+    primaryCta: "View resume",
+    primaryHref: "/resume",
+    secondaryCta: "Start a project",
+    secondaryHref: "#contact",
+    proofChips: [
+      "Aerospace software experience",
+      "Validation & integration mindset",
+      "Next.js, Python & automation",
+      "Internal tools & workflow systems",
+      "Full-stack product thinking",
     ],
   },
+  audiencePaths: [
+    {
+      title: "For Hiring Teams",
+      body: "I am open to software engineering roles involving tooling, automation, validation, internal tools, data workflows, backend systems, and product-facing applications.",
+      cta: "View Engineering Profile",
+      href: "/resume",
+    },
+    {
+      title: "For Founders & Small Teams",
+      body: "I help turn messy ideas and workflows into clear websites, prototypes, internal tools, documentation systems, and AI-ready ways of working.",
+      cta: "Explore Services",
+      href: "#services",
+    },
+  ],
+  workWithMe: [
+    {
+      title: "Engineering Roles",
+      body: "Open to software engineering roles where reliable systems, practical tooling, validation, automation, and clear communication matter.",
+      cta: "View Engineering Profile",
+      href: "/resume",
+    },
+    {
+      title: "Freelance Projects",
+      body: "Available for select projects with founders and small teams who need a clear website, prototype, workflow, or technical starting point.",
+      cta: "Start a Project",
+      href: "#contact",
+    },
+  ],
   services: [
     {
       title: "Website Clarity Sprint",
@@ -156,6 +183,20 @@ export const siteData = {
     {
       title: "Automation Tooling",
       body: "Experience building scripts, parsers, CLI utilities, and reporting tools that reduce repetitive engineering work.",
+    },
+  ],
+  technicalTeamStrengths: [
+    {
+      title: "Systems Mindset",
+      body: "I look at workflows, edge cases, validation needs, and maintainability so a tool keeps working after its first useful moment.",
+    },
+    {
+      title: "Builder Energy",
+      body: "I turn ambiguous requirements, legacy processes, and incomplete ideas into practical prototypes and tools that give a team a concrete next step.",
+    },
+    {
+      title: "Communication Clarity",
+      body: "I document decisions, explain tradeoffs, and make technical work easier to review, continue, and use across a team.",
     },
   ],
   work: [

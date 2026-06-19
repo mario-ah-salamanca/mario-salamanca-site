@@ -14,6 +14,7 @@
   --color-primary-strong: #5b8cff;
   --color-secondary: #7bd0ff;
   --color-on-primary: #002665;
+  --scroll-target-offset: 6rem;
 }
 
 @theme inline {
@@ -31,6 +32,11 @@
 html {
   min-height: 100%;
   scroll-behavior: smooth;
+}
+
+section[id],
+h2[id] {
+  scroll-margin-top: var(--scroll-target-offset);
 }
 
 body {
@@ -309,8 +315,18 @@ textarea {
 }
 
 @media (min-width: 768px) {
+  :root {
+    --scroll-target-offset: 6.5rem;
+  }
+
   .resume-markdown h2 {
     font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --scroll-target-offset: 7.5rem;
   }
 }
 

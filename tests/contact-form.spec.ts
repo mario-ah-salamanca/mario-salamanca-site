@@ -33,7 +33,7 @@ test.describe("contact form", () => {
     await expect(schedulingLink).toBeVisible();
     await expect(schedulingLink).toHaveAttribute(
       "href",
-      "https://calendar.google.com/calendar/appointments/schedules/test-schedule",
+      "https://calendar.app.google/gRRfovW9wqWXXQJE9",
     );
     await expect(schedulingLink).toHaveAttribute("target", "_blank");
   });
