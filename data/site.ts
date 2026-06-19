@@ -24,11 +24,10 @@ export const siteData = {
   },
   nav: [
     { label: "Home", href: "#" },
-    { label: "Proof", href: "#credibility" },
-    { label: "Services", href: "#services" },
+    { label: "Resume", href: "/resume" },
+    { label: "Technical Strengths", href: "#credibility" },
     { label: "Work", href: "#work" },
-    { label: "Resources", href: "#resources" },
-    { label: "Build Log", href: "#build-log" },
+    { label: "Work With Me", href: "#services" },
     { label: "About", href: "#about" },
   ],
   footer: {

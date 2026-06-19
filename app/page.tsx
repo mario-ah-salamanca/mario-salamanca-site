@@ -1,10 +1,8 @@
 import { AudiencePathsSection } from "@/components/sections/audience-paths-section";
-import { BuildLogPreviewSection } from "@/components/sections/build-log-preview-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { CredibilitySection } from "@/components/sections/credibility-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { PersonalStorySection } from "@/components/sections/personal-story-section";
-import { ResourcesSection } from "@/components/sections/resources-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { TechnicalTeamSection } from "@/components/sections/technical-team-section";
 import { WorkSection } from "@/components/sections/work-section";
@@ -15,12 +13,10 @@ export default function Home() {
     <SiteShell>
       <HeroSection />
       <AudiencePathsSection />
-      <CredibilitySection />
-      <ServicesSection />
       <WorkSection />
-      <ResourcesSection />
-      <BuildLogPreviewSection />
+      <CredibilitySection />
       <TechnicalTeamSection />
+      <ServicesSection />
       <PersonalStorySection />
       <ContactSection />
     </SiteShell>
