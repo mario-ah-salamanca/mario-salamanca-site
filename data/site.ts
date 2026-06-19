@@ -186,6 +186,20 @@ export const siteData = {
       body: "Experience building scripts, parsers, CLI utilities, and reporting tools that reduce repetitive engineering work.",
     },
   ],
+  technicalTeamStrengths: [
+    {
+      title: "Systems Mindset",
+      body: "I look at workflows, edge cases, validation needs, and maintainability so a tool keeps working after its first useful moment.",
+    },
+    {
+      title: "Builder Energy",
+      body: "I turn ambiguous requirements, legacy processes, and incomplete ideas into practical prototypes and tools that give a team a concrete next step.",
+    },
+    {
+      title: "Communication Clarity",
+      body: "I document decisions, explain tradeoffs, and make technical work easier to review, continue, and use across a team.",
+    },
+  ],
   work: [
     {
       title: "Aerospace Test Tooling Experience",
