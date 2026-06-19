@@ -173,6 +173,46 @@ export const caseStudies: readonly CaseStudy[] = [
     nextImprovement:
       "The next useful step is a reusable public starter kit with example project files, a lightweight onboarding guide, and a clearly bounded template for teams that want to adapt the approach.",
   },
+  {
+    slug: "personal-website-system",
+    title: "Nocturne Personal Website System",
+    summary:
+      "A static-exported personal brand site that combines an engineering profile, selected work, focused offers, and a privacy-conscious contact path.",
+    tags: ["Next.js", "Design System", "Personal Brand"],
+    context:
+      "A personal website needed to do more than collect a resume and project screenshots. The goal was a durable career and credibility platform that helps recruiters, hiring managers, founders, and collaborators understand both engineering experience and the type of work I want to do next.",
+    problem:
+      "The site had to communicate a mixed background—software engineering, validation, automation, product thinking, and selective client work—without turning into a generic developer portfolio or making claims that could not be substantiated. It also needed a deployment model that stayed simple, fast, and maintainable.",
+    constraints:
+      "The site is statically exported for GitHub Pages, so server-only lead handling and runtime databases are out of scope. It must keep public contact details intentional, avoid secrets in the browser, preserve accessible navigation and focus states, and describe confidential professional work at a safe level.",
+    role:
+      "Product owner, content strategist, designer, and full-stack implementer for the site structure, design system, content model, static deployment, and lead-capture flow.",
+    approach:
+      "I treated the site as a product surface: establish positioning and audience paths, move detailed evidence into dedicated pages, keep reusable content in typed data modules, use restrained visual tokens, and verify changes through linting, static builds, and browser coverage.",
+    architecture:
+      "The site uses the Next.js App Router, React, TypeScript, and Tailwind CSS. Shared layout and UI primitives support content-driven sections; static export produces GitHub Pages-compatible routes; GitHub Actions handles deployment; and Formspree provides a low-friction contact path with a native fallback for hosted spam protection.",
+    technologies: [
+      "Next.js App Router",
+      "React and TypeScript",
+      "Tailwind CSS",
+      "GitHub Pages static export",
+      "GitHub Actions",
+      "Formspree",
+      "Playwright",
+    ],
+    implementationHighlights: [
+      "Built a content-driven homepage and dedicated resume and selected-work routes around the engineering profile.",
+      "Defined a dark, restrained design system with responsive spacing, visible focus states, and reduced-motion support.",
+      "Configured static export and deployment support for GitHub Pages without adding a server runtime.",
+      "Implemented a contact flow that preserves a native Formspree fallback when AJAX submissions require hosted verification.",
+    ],
+    result:
+      "The site is an actively evolving public platform for presenting engineering work, professional context, and selective service offers. It now has a clearer recruiter path, a dedicated resume, and a selected-work system that can grow without duplicating content across the homepage.",
+    whatItDemonstrates:
+      "Product and engineering judgment applied together: choose constraints deliberately, make the content useful to a specific audience, preserve trust in the contact path, and build a surface that can be extended without a rewrite.",
+    nextImprovement:
+      "The highest-value next steps are dedicated service pages, stronger route-specific sharing assets, and production verification for the public domain and configured scheduling link before adding heavier platform features.",
+  },
 ];
 
 export function getCaseStudyBySlug(slug: string) {
