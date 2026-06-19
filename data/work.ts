@@ -134,6 +134,45 @@ export const caseStudies: readonly CaseStudy[] = [
     nextImprovement:
       "Given a non-confidential dataset, I would add a public example with sample inputs, a schema diagram, data-quality checks, and before-and-after reporting so the design tradeoffs can be inspected end to end.",
   },
+  {
+    slug: "ai-ready-documentation-kit",
+    title: "AI-Ready Documentation Kit",
+    summary:
+      "A repository-based system for project context, prompts, decisions, task planning, and progress records that makes work easier to continue and review.",
+    tags: ["AI Workflows", "Documentation", "Systems"],
+    context:
+      "A project can lose momentum when its important context is spread across chats, individual notes, tickets, and undocumented decisions. I have been developing a practical documentation structure for software and product work that needs both human clarity and useful AI-assisted execution.",
+    problem:
+      "AI tools can accelerate work, but they cannot safely infer the product direction, constraints, evidence boundaries, or definition of done. The problem was to give a project enough durable context and workflow structure that planning, execution, review, and handoff stay grounded in the real system.",
+    constraints:
+      "The kit is deliberately lightweight and repository-based: no claims of autonomous delivery, no client secrets in prompts, and no assumption that AI output is correct without review. It must remain usable by a person without locking a project into a particular AI vendor.",
+    role:
+      "Systems builder defining the documentation model, prompt responsibilities, decision-record format, task workflow, and review gates used to keep project work inspectable.",
+    approach:
+      "I organized the workflow around durable project artifacts: a brief for direction, architecture and decision notes for constraints, focused prompts for each work mode, task plans for scoped execution, and progress records that preserve what changed and how it was verified.",
+    architecture:
+      "The system is a structured repository layer rather than an external knowledge silo. Project brief and strategy documents provide direction; ordered prompt files guide planning, execution, review, and progress updates; issue or task records hold scoped work; and decision and changelog documents retain the rationale and history.",
+    technologies: [
+      "Markdown",
+      "Git and pull-request workflows",
+      "Repository-based prompt files",
+      "Issue and task tracking",
+      "Decision logs and changelogs",
+      "Schema-backed review practices",
+    ],
+    implementationHighlights: [
+      "Separated planning, execution, review, and progress documentation into explicit workflow stages.",
+      "Defined project context and constraints before implementation work begins.",
+      "Recorded decisions and verification outcomes so later work has a traceable starting point.",
+      "Kept prompt guidance and documentation in version control alongside the product it describes.",
+    ],
+    result:
+      "The system provides a repeatable way to turn scattered project knowledge into a reviewable working context. It is used to make next steps, constraints, and completion evidence clearer before AI assistance or implementation expands the scope.",
+    whatItDemonstrates:
+      "A practical view of AI readiness: organize the underlying project first, use automation to support judgment, and leave a clear trail that another person can inspect or continue.",
+    nextImprovement:
+      "The next useful step is a reusable public starter kit with example project files, a lightweight onboarding guide, and a clearly bounded template for teams that want to adapt the approach.",
+  },
 ];
 
 export function getCaseStudyBySlug(slug: string) {
