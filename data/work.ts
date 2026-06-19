@@ -56,6 +56,45 @@ export const caseStudies: readonly CaseStudy[] = [
     nextImprovement:
       "For a public technical walkthrough, I would build a separate, non-confidential demonstration that models a small validation workflow end to end, including simulated inputs, checks, and traceable reporting.",
   },
+  {
+    slug: "industrial-hmi-can-communication",
+    title: "Industrial HMI & CAN Communication",
+    summary:
+      "C++ and C# interface work, CAN communication support, and Angular HMI development for industrial machine workflows.",
+    tags: ["Embedded Systems", "HMI", "CAN"],
+    context:
+      "Industrial equipment needs software that makes machine state and operating modes understandable to people while reliably exchanging data with connected components. I worked on interfaces and communication support for an industrial attachment-device and filling-machine context.",
+    problem:
+      "The implementation needed to connect operating modes and machine information across a CAN communication layer, software integration points, and a human-machine interface. Each part had to support the surrounding workflow instead of behaving as an isolated feature.",
+    constraints:
+      "This was professional industrial work. Product names, customer details, machine specifications, production data, and performance figures are omitted. The case study describes the technologies and responsibilities without disclosing proprietary implementation details.",
+    role:
+      "Software Developer working with C++11, C#, CAN communication, an Angular HMI, and an integration layer between system resources and a NoSQL database.",
+    approach:
+      "I worked across the interface boundaries: implement the communication support needed for real-time exchange, connect software artifacts where integration was required, and build HMI functionality around the machine workflow people needed to operate.",
+    architecture:
+      "The solution spanned a C++ communication layer for CAN-bus exchange, application-level C++ and C# interfaces for operating modes and device behavior, an Angular HMI for workflow interaction, and a C# integration layer connected to a NoSQL data store.",
+    technologies: [
+      "C++11",
+      "C#",
+      "Angular",
+      "CAN bus",
+      "NoSQL database integration",
+      "Jira, Bitbucket, and Atlassian Cloud",
+    ],
+    implementationHighlights: [
+      "Developed C++11 and C# software for attachment-device interfaces and operating modes over CAN.",
+      "Implemented a C++ communication layer for real-time CAN-bus data exchange.",
+      "Built Angular HMI functionality for filling-machine workflows.",
+      "Implemented a C# layer connecting system resources and artifacts to a NoSQL database.",
+    ],
+    result:
+      "The work delivered software across the communication, interface, and operator-facing layers needed by the industrial workflow. It provided hands-on experience with the practical coupling between machine communication and usable software interfaces.",
+    whatItDemonstrates:
+      "Ability to work across embedded-adjacent communication, application integration, and HMI concerns while treating the interfaces between them as first-class engineering work.",
+    nextImprovement:
+      "A public demonstrator could make the interaction easier to inspect by simulating CAN frames, showing operator states in a small HMI, and documenting the boundary between communication, application, and UI layers.",
+  },
 ];
 
 export function getCaseStudyBySlug(slug: string) {
